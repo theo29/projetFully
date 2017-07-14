@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 @Entity
 public abstract class GAEChat {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected long id;
     protected String messageChat;
     protected Date dateTimeChat;
