@@ -21,7 +21,7 @@ public class GAECall {
     private Date dateend;
     private String mapposition;
 
-    public GAECall(){
+    public GAECall() {
 
     }
 

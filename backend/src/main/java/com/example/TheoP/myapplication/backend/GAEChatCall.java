@@ -19,16 +19,16 @@ public class GAEChatCall extends GAEChat {
     private long id;
     private GAECall call;
 
-    public GAEChatCall(){
+    public GAEChatCall() {
 
     }
 
     public GAEChatCall(GAECall call, String messageChat, Date dateTimeChat,
                        GAEMember member) {
         this.call = call;
-        this.messageChat=messageChat;
-        this.dateTimeChat=dateTimeChat;
-        this.member=member;
+        this.messageChat = messageChat;
+        this.dateTimeChat = dateTimeChat;
+        this.member = member;
     }
 
     public GAECall getCall() {

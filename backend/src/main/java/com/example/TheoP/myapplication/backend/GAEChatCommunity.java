@@ -19,16 +19,16 @@ public class GAEChatCommunity extends GAEChat {
     private long id;
     private GAECommunity community;
 
-    public GAEChatCommunity(){
+    public GAEChatCommunity() {
 
     }
 
     public GAEChatCommunity(GAECommunity community, String messageChat, Date dateTimeChat,
-            GAEMember member) {
+                            GAEMember member) {
         this.community = community;
-        this.messageChat=messageChat;
-        this.dateTimeChat=dateTimeChat;
-        this.member=member;
+        this.messageChat = messageChat;
+        this.dateTimeChat = dateTimeChat;
+        this.member = member;
     }
 
     public GAECommunity getCommunity() {

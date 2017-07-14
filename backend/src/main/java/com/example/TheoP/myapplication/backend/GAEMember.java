@@ -22,7 +22,7 @@ public class GAEMember {
     private GAECommunity community;
 
 
-    public GAEMember(){
+    public GAEMember() {
 
     }
 

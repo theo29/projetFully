@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 
-
 @Entity
 public abstract class GAEChat {
     @Id
@@ -18,8 +17,6 @@ public abstract class GAEChat {
     protected String messageChat;
     protected Date dateTimeChat;
     protected GAEMember member;
-
-
 
 
     public String getMessageChat() {

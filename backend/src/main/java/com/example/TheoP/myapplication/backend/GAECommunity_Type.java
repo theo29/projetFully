@@ -21,7 +21,7 @@ public class GAECommunity_Type {
     private long id;
     private String description;
 
-    public  GAECommunity_Type(){
+    public GAECommunity_Type() {
 
     }
 

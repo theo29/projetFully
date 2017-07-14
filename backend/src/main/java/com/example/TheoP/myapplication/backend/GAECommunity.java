@@ -21,7 +21,7 @@ public class GAECommunity {
     private Date dateTimeCreated;
     private GAEUser useradmin;
 
-    public GAECommunity(){
+    public GAECommunity() {
 
     }
 
@@ -39,7 +39,9 @@ public class GAECommunity {
         return name;
     }
 
-    public String getDescriptionLong() {return descriptionLong;}
+    public String getDescriptionLong() {
+        return descriptionLong;
+    }
 
     public void setDescriptionLong(String descriptionLong) {
         this.descriptionLong = descriptionLong;
@@ -86,9 +88,9 @@ public class GAECommunity {
         this.useradmin = useradmin;
     }
 
-    public long getId() {return id;}
-
-
+    public long getId() {
+        return id;
+    }
 
 
 }
