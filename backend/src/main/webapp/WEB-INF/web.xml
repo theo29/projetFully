@@ -8,14 +8,38 @@
         <filter-name>ObjectifyFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
     <servlet>
-        <servlet-name>MyServlet</servlet-name>
-        <servlet-class>com.example.TheoP.myapplication.backend.MyServlet</servlet-class>
+        <servlet-name>SystemServiceServlet</servlet-name>
+        <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
+        <init-param>
+            <param-name>services</param-name>
+            <param-value>
+                com.example.TheoP.myapplication.backend.GAECallEndpoint,
+                com.example.TheoP.myapplication.backend.GAEChatCallEndpoint,
+                com.example.TheoP.myapplication.backend.GAEChatEndpoint,
+                com.example.TheoP.myapplication.backend.GAEUserEndpoint,
+                com.example.TheoP.myapplication.backend.GAEChatCommunityEndpoint,
+                com.example.TheoP.myapplication.backend.GAECommunity_TypeEndpoint,
+                com.example.TheoP.myapplication.backend.GAECommunityEndpoint,
+                com.example.TheoP.myapplication.backend.GAEMemberEndpoint
+            </param-value>
+        </init-param>
     </servlet>
     <servlet-mapping>
-        <servlet-name>MyServlet</servlet-name>
-        <url-pattern>/hello</url-pattern>
+        <servlet-name>SystemServiceServlet</servlet-name>
+        <url-pattern>/_ah/spi/*</url-pattern>
     </servlet-mapping>
+
+    <!--<servlet>-->
+        <!--<servlet-name>MyServlet</servlet-name>-->
+        <!--<servlet-class>com.example.TheoP.myapplication.backend.MyServlet</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>MyServlet</servlet-name>-->
+        <!--<url-pattern>/hello</url-pattern>-->
+    <!--</servlet-mapping>-->
+
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
