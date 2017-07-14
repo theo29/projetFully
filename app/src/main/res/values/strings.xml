@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">projetFully</string>
+    <string name="title_activity_selected_community">SelectedCommunity</string>
 </resources>
