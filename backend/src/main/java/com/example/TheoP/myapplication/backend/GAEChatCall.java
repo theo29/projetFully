@@ -14,9 +14,7 @@ import javax.persistence.GenerationType;
 
 @Entity
 public class GAEChatCall extends GAEChat {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+
     private GAECall call;
 
     public GAEChatCall() {
