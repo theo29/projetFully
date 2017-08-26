@@ -1,12 +1,5 @@
 package com.hesso.projetfully.GAE;
 
-import android.os.AsyncTask;
-import android.util.Log;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by GCI on 14.07.2017.
  */

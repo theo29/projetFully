@@ -3,8 +3,15 @@ package com.hesso.projetfully.GAE;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.example.TheoP.myapplication.backend.GAEUser;
-import com.example.TheoP.myapplication.backend.GAEUser;
+//import com.example.TheoP.myapplication.backend.GAEUser;
+//import com.example.theop.myapplication.backend.gAEUserApi.GAEUserApi;
+import com.example.theop.myapplication.backend.gAEUserApi.GAEUserApi;
+import com.example.theop.myapplication.backend.gAEUserApi.model.GAEUser;
+
+import com.google.api.client.extensions.android.http.AndroidHttp;
+import com.google.api.client.extensions.android.json.AndroidJsonFactory;
+import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
+import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,9 +21,14 @@ import java.util.List;
  * Created by GCI on 25.08.2017.
  */
 
+//public class EndpointsAsyncTaskUser{
+//
+//}
+
+
 public class EndpointsAsyncTaskUser extends AsyncTask<Void, Void, List<GAEUser>> {
     private static final String TAG = EndpointsAsyncTaskUser.class.getName();
-    private static GAEUserApi gaeUserApi = null;
+   private static GAEUserApi gaeUserApi = null;
     private GAEUser gaeUser = null;
     private List<GAEUser> gaeUsers = null;
 
@@ -43,7 +55,7 @@ public class EndpointsAsyncTaskUser extends AsyncTask<Void, Void, List<GAEUser>>
                     // - turn off compression when running against local devappserver
                     // if you deploy on the cloud backend, use your app name
                     // such as https://<your-app-id>.appspot.com
-                    .setRootUrl("https://backup-154715.appspot.com/_ah/api/")
+                    .setRootUrl("https://fulltopia-173713.appspot.com/_ah/api/")
                     .setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
                         @Override
                         public void initialize(AbstractGoogleClientRequest<?> abstractGoogleClientRequest) throws IOException {
@@ -96,3 +108,4 @@ public class EndpointsAsyncTaskUser extends AsyncTask<Void, Void, List<GAEUser>>
         }
     }
 }
+
