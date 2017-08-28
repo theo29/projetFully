@@ -3,8 +3,6 @@ package com.hesso.projetfully.GAE;
 import android.os.AsyncTask;
 import android.util.Log;
 
-//import com.example.TheoP.myapplication.backend.GAEUser;
-//import com.example.theop.myapplication.backend.gAEUserApi.GAEUserApi;
 import com.example.theop.myapplication.backend.gAEUserApi.GAEUserApi;
 import com.example.theop.myapplication.backend.gAEUserApi.model.GAEUser;
 
