@@ -26,8 +26,8 @@
                 com.example.TheoP.myapplication.backend.GAEChatCommunityEndpoint,
                 com.example.TheoP.myapplication.backend.GAECommunity_TypeEndpoint,
                 com.example.TheoP.myapplication.backend.GAECommunityEndpoint,
-                com.example.TheoP.myapplication.backend.GAEMemberEndpoint,
-                com.example.TheoP.myapplication.backend.GAETestEndpoint</param-value>
+                com.example.TheoP.myapplication.backend.GAEMemberEndpoint
+            </param-value>
         </init-param>
     </servlet>
     <servlet-mapping>
