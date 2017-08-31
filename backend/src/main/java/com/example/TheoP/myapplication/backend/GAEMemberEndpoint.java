@@ -58,7 +58,7 @@ public class GAEMemberEndpoint {
             name = "get",
             path = "gAEMember/{id}",
             httpMethod = ApiMethod.HttpMethod.GET)
-    public GAEMember get(@Named("id") long id) throws NotFoundException {
+    public GAEMember get(@Named("id") Long id) throws NotFoundException {
         logger.info("Getting GAEMember with ID: " + id);
         GAEMember gAEMember = ofy().load().type(GAEMember.class).id(id).now();
         if (gAEMember == null) {
@@ -77,7 +77,7 @@ public class GAEMemberEndpoint {
     public GAEMember insert(GAEMember gAEMember) {
         // Typically in a RESTful API a POST does not have a known ID (assuming the ID is used in the resource path).
         // You should validate that gAEMember.id has not been set. If the ID type is not supported by the
-        // Objectify ID generator, e.g. long or String, then you should generate the unique ID yourself prior to saving.
+        // Objectify ID generator, e.g. Long or String, then you should generate the unique ID yourself prior to saving.
         //
         // If your client provides the ID then you should probably use PUT instead.
         ofy().save().entity(gAEMember).now();
@@ -99,7 +99,7 @@ public class GAEMemberEndpoint {
             name = "update",
             path = "gAEMember/{id}",
             httpMethod = ApiMethod.HttpMethod.PUT)
-    public GAEMember update(@Named("id") long id, GAEMember gAEMember) throws NotFoundException {
+    public GAEMember update(@Named("id") Long id, GAEMember gAEMember) throws NotFoundException {
         // TODO: You should validate your ID parameter against your resource's ID here.
         checkExists(id);
         ofy().save().entity(gAEMember).now();
@@ -118,7 +118,7 @@ public class GAEMemberEndpoint {
             name = "remove",
             path = "gAEMember/{id}",
             httpMethod = ApiMethod.HttpMethod.DELETE)
-    public void remove(@Named("id") long id) throws NotFoundException {
+    public void remove(@Named("id") Long id) throws NotFoundException {
         checkExists(id);
         ofy().delete().type(GAEMember.class).id(id).now();
         logger.info("Deleted GAEMember with ID: " + id);
@@ -149,7 +149,7 @@ public class GAEMemberEndpoint {
         return CollectionResponse.<GAEMember>builder().setItems(gAEMemberList).setNextPageToken(queryIterator.getCursor().toWebSafeString()).build();
     }
 
-    private void checkExists(long id) throws NotFoundException {
+    private void checkExists(Long id) throws NotFoundException {
         try {
             ofy().load().type(GAEMember.class).id(id).safe();
         } catch (com.googlecode.objectify.NotFoundException e) {

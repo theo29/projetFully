@@ -18,7 +18,7 @@ import javax.persistence.GenerationType;
 public class GAECommunity_Type {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String description;
 
     public GAECommunity_Type() {
@@ -35,7 +35,7 @@ public class GAECommunity_Type {
         return description;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

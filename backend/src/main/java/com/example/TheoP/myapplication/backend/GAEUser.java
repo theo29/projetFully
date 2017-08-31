@@ -14,7 +14,7 @@ import javax.persistence.GenerationType;
 public class GAEUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String userName;
     private String email;
     private String password;
@@ -28,11 +28,11 @@ public class GAEUser {
         this.password = password;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

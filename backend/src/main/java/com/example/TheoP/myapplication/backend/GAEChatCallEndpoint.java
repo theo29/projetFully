@@ -58,7 +58,7 @@ public class GAEChatCallEndpoint {
             name = "get",
             path = "gAEChatCall/{id}",
             httpMethod = ApiMethod.HttpMethod.GET)
-    public GAEChatCall get(@Named("id") long id) throws NotFoundException {
+    public GAEChatCall get(@Named("id") Long id) throws NotFoundException {
         logger.info("Getting GAEChatCall with ID: " + id);
         GAEChatCall gAEChatCall = ofy().load().type(GAEChatCall.class).id(id).now();
         if (gAEChatCall == null) {
@@ -77,7 +77,7 @@ public class GAEChatCallEndpoint {
     public GAEChatCall insert(GAEChatCall gAEChatCall) {
         // Typically in a RESTful API a POST does not have a known ID (assuming the ID is used in the resource path).
         // You should validate that gAEChatCall.id has not been set. If the ID type is not supported by the
-        // Objectify ID generator, e.g. long or String, then you should generate the unique ID yourself prior to saving.
+        // Objectify ID generator, e.g. Long or String, then you should generate the unique ID yourself prior to saving.
         //
         // If your client provides the ID then you should probably use PUT instead.
         ofy().save().entity(gAEChatCall).now();
@@ -99,7 +99,7 @@ public class GAEChatCallEndpoint {
             name = "update",
             path = "gAEChatCall/{id}",
             httpMethod = ApiMethod.HttpMethod.PUT)
-    public GAEChatCall update(@Named("id") long id, GAEChatCall gAEChatCall) throws NotFoundException {
+    public GAEChatCall update(@Named("id") Long id, GAEChatCall gAEChatCall) throws NotFoundException {
         // TODO: You should validate your ID parameter against your resource's ID here.
         checkExists(id);
         ofy().save().entity(gAEChatCall).now();
@@ -118,7 +118,7 @@ public class GAEChatCallEndpoint {
             name = "remove",
             path = "gAEChatCall/{id}",
             httpMethod = ApiMethod.HttpMethod.DELETE)
-    public void remove(@Named("id") long id) throws NotFoundException {
+    public void remove(@Named("id") Long id) throws NotFoundException {
         checkExists(id);
         ofy().delete().type(GAEChatCall.class).id(id).now();
         logger.info("Deleted GAEChatCall with ID: " + id);
@@ -149,7 +149,7 @@ public class GAEChatCallEndpoint {
         return CollectionResponse.<GAEChatCall>builder().setItems(gAEChatCallList).setNextPageToken(queryIterator.getCursor().toWebSafeString()).build();
     }
 
-    private void checkExists(long id) throws NotFoundException {
+    private void checkExists(Long id) throws NotFoundException {
         try {
             ofy().load().type(GAEChatCall.class).id(id).safe();
         } catch (com.googlecode.objectify.NotFoundException e) {

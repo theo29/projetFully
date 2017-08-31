@@ -17,7 +17,7 @@ import javax.persistence.GenerationType;
 public class GAEMember {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private GAEUser user;
     private GAECommunity community;
 

@@ -13,7 +13,7 @@ import javax.persistence.GenerationType;
 public class GAECommunity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String name;
     private String descriptionLong;
     private String picture;
@@ -88,7 +88,7 @@ public class GAECommunity {
         this.useradmin = useradmin;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

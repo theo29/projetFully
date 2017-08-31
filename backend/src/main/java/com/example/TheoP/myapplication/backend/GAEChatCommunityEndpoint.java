@@ -58,7 +58,7 @@ public class GAEChatCommunityEndpoint {
             name = "get",
             path = "gAEChatCommunity/{id}",
             httpMethod = ApiMethod.HttpMethod.GET)
-    public GAEChatCommunity get(@Named("id") long id) throws NotFoundException {
+    public GAEChatCommunity get(@Named("id") Long id) throws NotFoundException {
         logger.info("Getting GAEChatCommunity with ID: " + id);
         GAEChatCommunity gAEChatCommunity = ofy().load().type(GAEChatCommunity.class).id(id).now();
         if (gAEChatCommunity == null) {
@@ -77,7 +77,7 @@ public class GAEChatCommunityEndpoint {
     public GAEChatCommunity insert(GAEChatCommunity gAEChatCommunity) {
         // Typically in a RESTful API a POST does not have a known ID (assuming the ID is used in the resource path).
         // You should validate that gAEChatCommunity.id has not been set. If the ID type is not supported by the
-        // Objectify ID generator, e.g. long or String, then you should generate the unique ID yourself prior to saving.
+        // Objectify ID generator, e.g. Long or String, then you should generate the unique ID yourself prior to saving.
         //
         // If your client provides the ID then you should probably use PUT instead.
         ofy().save().entity(gAEChatCommunity).now();
@@ -99,7 +99,7 @@ public class GAEChatCommunityEndpoint {
             name = "update",
             path = "gAEChatCommunity/{id}",
             httpMethod = ApiMethod.HttpMethod.PUT)
-    public GAEChatCommunity update(@Named("id") long id, GAEChatCommunity gAEChatCommunity) throws NotFoundException {
+    public GAEChatCommunity update(@Named("id") Long id, GAEChatCommunity gAEChatCommunity) throws NotFoundException {
         // TODO: You should validate your ID parameter against your resource's ID here.
         checkExists(id);
         ofy().save().entity(gAEChatCommunity).now();
@@ -118,7 +118,7 @@ public class GAEChatCommunityEndpoint {
             name = "remove",
             path = "gAEChatCommunity/{id}",
             httpMethod = ApiMethod.HttpMethod.DELETE)
-    public void remove(@Named("id") long id) throws NotFoundException {
+    public void remove(@Named("id") Long id) throws NotFoundException {
         checkExists(id);
         ofy().delete().type(GAEChatCommunity.class).id(id).now();
         logger.info("Deleted GAEChatCommunity with ID: " + id);
@@ -149,7 +149,7 @@ public class GAEChatCommunityEndpoint {
         return CollectionResponse.<GAEChatCommunity>builder().setItems(gAEChatCommunityList).setNextPageToken(queryIterator.getCursor().toWebSafeString()).build();
     }
 
-    private void checkExists(long id) throws NotFoundException {
+    private void checkExists(Long id) throws NotFoundException {
         try {
             ofy().load().type(GAEChatCommunity.class).id(id).safe();
         } catch (com.googlecode.objectify.NotFoundException e) {

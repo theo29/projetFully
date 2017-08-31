@@ -28,7 +28,7 @@ public class PFG_Fulltopia {
         gaeUsers = new ArrayList<GAEUser>();
 
         GAEUser gaeUser = new GAEUser();
-        gaeUser.setId((long) 10);
+//        gaeUser.setId((long) 10);
         gaeUser.setEmail("g.cipri@global-office.com");
         gaeUser.setPassword("1234");
         gaeUser.setUserName("Giuseppe");
@@ -36,7 +36,7 @@ public class PFG_Fulltopia {
         gaeUsers.add(gaeUser);
 
         gaeUser = new GAEUser();
-        gaeUser.setId((long) 2);
+//        gaeUser.setId((long) 2);
         gaeUser.setEmail("axel@students.hes.ch");
         gaeUser.setPassword("9876");
         gaeUser.setUserName("Axel");

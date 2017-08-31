@@ -15,8 +15,8 @@ import javax.persistence.GenerationType;
 public class GAECall {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private long idMemberCreator;
+    private Long id;
+    private Long idMemberCreator;
     private String description;
     private Date dateend;
     private String mapposition;
@@ -25,7 +25,7 @@ public class GAECall {
 
     }
 
-    public GAECall(long idMemberCreator, String description, Date dateend, String mapposition) {
+    public GAECall(Long idMemberCreator, String description, Date dateend, String mapposition) {
         this.idMemberCreator = idMemberCreator;
         this.description = description;
         this.dateend = dateend;
@@ -37,15 +37,15 @@ public class GAECall {
         return description;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public long getidMemberCreator() {
+    public Long getidMemberCreator() {
         return idMemberCreator;
     }
 
-    public void setidMemberCreator(long idMemberCreator) {
+    public void setidMemberCreator(Long idMemberCreator) {
         this.idMemberCreator = idMemberCreator;
     }
 

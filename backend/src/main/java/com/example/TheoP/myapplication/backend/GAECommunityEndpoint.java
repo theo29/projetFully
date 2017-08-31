@@ -58,7 +58,7 @@ public class GAECommunityEndpoint {
             name = "get",
             path = "gAECommunity/{id}",
             httpMethod = ApiMethod.HttpMethod.GET)
-    public GAECommunity get(@Named("id") long id) throws NotFoundException {
+    public GAECommunity get(@Named("id") Long id) throws NotFoundException {
         logger.info("Getting GAECommunity with ID: " + id);
         GAECommunity gAECommunity = ofy().load().type(GAECommunity.class).id(id).now();
         if (gAECommunity == null) {
@@ -77,7 +77,7 @@ public class GAECommunityEndpoint {
     public GAECommunity insert(GAECommunity gAECommunity) {
         // Typically in a RESTful API a POST does not have a known ID (assuming the ID is used in the resource path).
         // You should validate that gAECommunity.id has not been set. If the ID type is not supported by the
-        // Objectify ID generator, e.g. long or String, then you should generate the unique ID yourself prior to saving.
+        // Objectify ID generator, e.g. Long or String, then you should generate the unique ID yourself prior to saving.
         //
         // If your client provides the ID then you should probably use PUT instead.
         ofy().save().entity(gAECommunity).now();
@@ -99,7 +99,7 @@ public class GAECommunityEndpoint {
             name = "update",
             path = "gAECommunity/{id}",
             httpMethod = ApiMethod.HttpMethod.PUT)
-    public GAECommunity update(@Named("id") long id, GAECommunity gAECommunity) throws NotFoundException {
+    public GAECommunity update(@Named("id") Long id, GAECommunity gAECommunity) throws NotFoundException {
         // TODO: You should validate your ID parameter against your resource's ID here.
         checkExists(id);
         ofy().save().entity(gAECommunity).now();
@@ -118,7 +118,7 @@ public class GAECommunityEndpoint {
             name = "remove",
             path = "gAECommunity/{id}",
             httpMethod = ApiMethod.HttpMethod.DELETE)
-    public void remove(@Named("id") long id) throws NotFoundException {
+    public void remove(@Named("id") Long id) throws NotFoundException {
         checkExists(id);
         ofy().delete().type(GAECommunity.class).id(id).now();
         logger.info("Deleted GAECommunity with ID: " + id);
@@ -149,7 +149,7 @@ public class GAECommunityEndpoint {
         return CollectionResponse.<GAECommunity>builder().setItems(gAECommunityList).setNextPageToken(queryIterator.getCursor().toWebSafeString()).build();
     }
 
-    private void checkExists(long id) throws NotFoundException {
+    private void checkExists(Long id) throws NotFoundException {
         try {
             ofy().load().type(GAECommunity.class).id(id).safe();
         } catch (com.googlecode.objectify.NotFoundException e) {

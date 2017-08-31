@@ -58,7 +58,7 @@ public class GAEUserEndpoint {
             name = "get",
             path = "gAEUser/{id}",
             httpMethod = ApiMethod.HttpMethod.GET)
-    public GAEUser get(@Named("id") long id) throws NotFoundException {
+    public GAEUser get(@Named("id") Long id) throws NotFoundException {
         logger.info("Getting GAEUser with ID: " + id);
         GAEUser gAEUser = ofy().load().type(GAEUser.class).id(id).now();
         if (gAEUser == null) {
@@ -77,7 +77,7 @@ public class GAEUserEndpoint {
     public GAEUser insert(GAEUser gAEUser) {
         // Typically in a RESTful API a POST does not have a known ID (assuming the ID is used in the resource path).
         // You should validate that gAEUser.id has not been set. If the ID type is not supported by the
-        // Objectify ID generator, e.g. long or String, then you should generate the unique ID yourself prior to saving.
+        // Objectify ID generator, e.g. Long or String, then you should generate the unique ID yourself prior to saving.
         //
         // If your client provides the ID then you should probably use PUT instead.
         ofy().save().entity(gAEUser).now();
@@ -99,7 +99,7 @@ public class GAEUserEndpoint {
             name = "update",
             path = "gAEUser/{id}",
             httpMethod = ApiMethod.HttpMethod.PUT)
-    public GAEUser update(@Named("id") long id, GAEUser gAEUser) throws NotFoundException {
+    public GAEUser update(@Named("id") Long id, GAEUser gAEUser) throws NotFoundException {
         // TODO: You should validate your ID parameter against your resource's ID here.
         checkExists(id);
         ofy().save().entity(gAEUser).now();
@@ -118,7 +118,7 @@ public class GAEUserEndpoint {
             name = "remove",
             path = "gAEUser/{id}",
             httpMethod = ApiMethod.HttpMethod.DELETE)
-    public void remove(@Named("id") long id) throws NotFoundException {
+    public void remove(@Named("id") Long id) throws NotFoundException {
         checkExists(id);
         ofy().delete().type(GAEUser.class).id(id).now();
         logger.info("Deleted GAEUser with ID: " + id);
@@ -149,7 +149,7 @@ public class GAEUserEndpoint {
         return CollectionResponse.<GAEUser>builder().setItems(gAEUserList).setNextPageToken(queryIterator.getCursor().toWebSafeString()).build();
     }
 
-    private void checkExists(long id) throws NotFoundException {
+    private void checkExists(Long id) throws NotFoundException {
         try {
             ofy().load().type(GAEUser.class).id(id).safe();
         } catch (com.googlecode.objectify.NotFoundException e) {
