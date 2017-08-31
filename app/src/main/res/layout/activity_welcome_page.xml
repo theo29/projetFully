@@ -61,14 +61,21 @@
 
             <Button
                 android:id="@+id/btn_connect"
-                android:layout_width="245dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="CONNECT"
                 android:textAlignment="center" />
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="40sp" />
+                android:layout_height="10sp" />
+
+            <Button
+                android:id="@+id/btnTestData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="testDataGAE"
+                android:text="Test DATA" />
 
             <TextView
                 android:id="@+id/tv_notMember"
@@ -80,4 +87,5 @@
 
         </LinearLayout>
     </ScrollView>
+
 </LinearLayout>

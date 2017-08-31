@@ -10,6 +10,7 @@ import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
 import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
+import com.hesso.projetfully.bll.PFG_Fulltopia;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -37,9 +38,10 @@ public class EndpointsAsyncTaskUser extends AsyncTask<Void, Void, List<GAEUser>>
         this.gaeUser = gaeUser;
     }
 
-    EndpointsAsyncTaskUser(List<GAEUser> gaeUsers) {
+    public EndpointsAsyncTaskUser(List<GAEUser> gaeUsers) {
         this.gaeUsers = gaeUsers;
     }
+
 
     @Override
     protected List<GAEUser> doInBackground(Void... params) {
@@ -53,7 +55,7 @@ public class EndpointsAsyncTaskUser extends AsyncTask<Void, Void, List<GAEUser>>
                     // - turn off compression when running against local devappserver
                     // if you deploy on the cloud backend, use your app name
                     // such as https://<your-app-id>.appspot.com
-                    .setRootUrl("https://fulltopia-173713.appspot.com/_ah/api/")
+                    .setRootUrl(PFG_Fulltopia._HTTPS_APP_ID_)
                     .setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
                         @Override
                         public void initialize(AbstractGoogleClientRequest<?> abstractGoogleClientRequest) throws IOException {

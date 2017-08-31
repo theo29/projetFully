@@ -1,13 +1,51 @@
 package com.hesso.projetfully.bll;
 
-import android.content.Context;
+import com.example.theop.myapplication.backend.gAEUserApi.model.GAEUser;
+
+import com.hesso.projetfully.GAE.EndpointsAsyncTaskUser;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by GCI on 14.07.2017.
  */
 public class PFG_Fulltopia {
+    // options for running against local devappserver
+    // - 10.0.2.2 is localhost's IP address in Android emulator
+    // - turn off compression when running against local devappserver
+    // if you deploy on the cloud backend, use your app name
+    // such as https://<your-app-id>.appspot.com
 
-    public static void test_Add_DATA(Context context){
+    // local
+//    public static final String _HTTPS_APP_ID_ = "http://10.0.2.2:8080/_ah/api/";
+    // cloud
+    public static final String _HTTPS_APP_ID_ = "https://fulltopia-173713.appspot.com/_ah/api/";
+
+    public static void test_Add_DATA(){
+         List<GAEUser> gaeUsers;
+
+        gaeUsers = new ArrayList<GAEUser>();
+
+        GAEUser gaeUser = new GAEUser();
+        gaeUser.setId((long) 10);
+        gaeUser.setEmail("g.cipri@global-office.com");
+        gaeUser.setPassword("1234");
+        gaeUser.setUserName("Giuseppe");
+        // add in the gaeUsers
+        gaeUsers.add(gaeUser);
+
+        gaeUser = new GAEUser();
+        gaeUser.setId((long) 2);
+        gaeUser.setEmail("axel@students.hes.ch");
+        gaeUser.setPassword("9876");
+        gaeUser.setUserName("Axel");
+        // add in the gaeUsers
+        gaeUsers.add(gaeUser);
+
+        if (gaeUsers.size() > 0) {
+            new EndpointsAsyncTaskUser(gaeUsers).execute();
+        }
 
     }
 

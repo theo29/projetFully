@@ -22,12 +22,11 @@ dependencies {
     appengineSdk 'com.google.appengine:appengine-java-sdk:1.9.54'
     compile 'com.google.appengine:appengine-endpoints:1.9.54'
     compile 'com.google.appengine:appengine-endpoints-deps:1.9.54'
-//    compile 'javax.servlet:servlet-api:2.5'
+    compile 'javax.servlet:servlet-api:2.5'
     compile 'com.googlecode.objectify:objectify:5.1.21'
 //    compile 'com.googlecode.objectify:objectify:5.0.3'
     compile 'javax.persistence:persistence-api:1.0'
 }
-
 appengine {
     downloadSdk = true
     appcfg {
@@ -37,4 +36,7 @@ appengine {
         getClientLibsOnBuild = true
         getDiscoveryDocsOnBuild = true
     }
+    targetCompatibility = '1.7'
+    sourceCompatibility = '1.7'
+
 }
