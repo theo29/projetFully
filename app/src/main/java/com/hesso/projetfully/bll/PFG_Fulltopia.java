@@ -22,7 +22,7 @@ public class PFG_Fulltopia {
     // local
 //    public static final String _HTTPS_APP_ID_ = "http://10.0.2.2:8080/_ah/api/";
     // cloud
-    public static final String _HTTPS_APP_ID_ = "https://fulltopia-173713.appspot.com/_ah/api/";
+    public static final String _HTTPS_APP_ID_ = "https://projetfully.appspot.com/_ah/api/";
 
     public static void test_Add_DATA(){
         test_Add_DATA_Users();
