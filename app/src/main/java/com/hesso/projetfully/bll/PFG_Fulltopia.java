@@ -1,7 +1,9 @@
 package com.hesso.projetfully.bll;
 
 import com.example.theop.myapplication.backend.gAEUserApi.model.GAEUser;
+import com.example.theop.myapplication.backend.gAECommunityTypeApi.model.GAECommunityType;
 
+import com.hesso.projetfully.GAE.EndpointsAsyncTaskCommunityType;
 import com.hesso.projetfully.GAE.EndpointsAsyncTaskUser;
 
 import java.util.ArrayList;
@@ -23,7 +25,48 @@ public class PFG_Fulltopia {
     public static final String _HTTPS_APP_ID_ = "https://fulltopia-173713.appspot.com/_ah/api/";
 
     public static void test_Add_DATA(){
-         List<GAEUser> gaeUsers;
+        test_Add_DATA_Users();
+        test_Add_DATA_CommunityTypes();
+
+    }
+
+    private static void test_Add_DATA_CommunityTypes() {
+        List<GAECommunityType> gaeCommunityTypes;
+
+        gaeCommunityTypes = new ArrayList<GAECommunityType>();
+
+        // add in the GAE
+        GAECommunityType gaeCommunityType = new GAECommunityType();
+        gaeCommunityType.setDescription("Sport");
+        gaeCommunityTypes.add(gaeCommunityType);
+        // add in the GAE
+        gaeCommunityType = new GAECommunityType();
+        gaeCommunityType.setDescription("Music");
+        gaeCommunityTypes.add(gaeCommunityType);
+        // add in the GAE
+        gaeCommunityType = new GAECommunityType();
+        gaeCommunityType.setDescription("Art");
+        gaeCommunityTypes.add(gaeCommunityType);
+        // add in the GAE
+        gaeCommunityType = new GAECommunityType();
+        gaeCommunityType.setDescription("Hobby");
+        gaeCommunityTypes.add(gaeCommunityType);
+        // add in the GAE
+        gaeCommunityType = new GAECommunityType();
+        gaeCommunityType.setDescription("Cours");
+        gaeCommunityTypes.add(gaeCommunityType);
+        // add in the GAE
+        gaeCommunityType = new GAECommunityType();
+        gaeCommunityType.setDescription("Home");
+        gaeCommunityTypes.add(gaeCommunityType);
+
+        if (gaeCommunityTypes.size() > 0) {
+            new EndpointsAsyncTaskCommunityType(gaeCommunityTypes).execute();
+        }
+    }
+
+    private static void test_Add_DATA_Users() {
+        List<GAEUser> gaeUsers;
 
         gaeUsers = new ArrayList<GAEUser>();
 
@@ -46,7 +89,6 @@ public class PFG_Fulltopia {
         if (gaeUsers.size() > 0) {
             new EndpointsAsyncTaskUser(gaeUsers).execute();
         }
-
     }
 
 }
