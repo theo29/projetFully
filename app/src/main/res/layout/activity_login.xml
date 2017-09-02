@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.hesso.projetfully.Login">
+    tools:context="com.hesso.projetfully.LoginActivity">
 
     <LinearLayout
         android:layout_centerVertical="true"
@@ -20,7 +20,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:hint="Enter email"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:text="a@b.com" />
 
         <EditText
             android:id="@+id/editTextPassword"
@@ -28,7 +29,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:hint="Enter password"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:text="123456" />
 
         <Button
             android:id="@+id/buttonSignup"

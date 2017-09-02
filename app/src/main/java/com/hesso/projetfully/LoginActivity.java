@@ -1,6 +1,5 @@
 package com.hesso.projetfully;
 
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
@@ -20,14 +19,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.hesso.projetfully.bll.PFG_Fulltopia;
 
-public class Login extends AppCompatActivity implements View.OnClickListener{
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
     //defining view objects
     private EditText editTextEmail;
     private EditText editTextPassword;
     private Button buttonSignup;
     private Button buttonSignin;
-    private static final String TAG = "Login";
+    private static final String TAG = "LoginActivity";
 
 
     //defining firebaseauth object
@@ -56,10 +55,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                 registerUser();
             }
         });
-
-
-
-
         buttonSignin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -98,10 +93,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                         //checking if success
                         if(task.isSuccessful()){
                             //display some message here
-                            Toast.makeText(Login.this,"Successfully registered",Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivity.this,"Successfully registered",Toast.LENGTH_LONG).show();
                         }else{
                             //display some message here
-                            Toast.makeText(Login.this,"Registration Error",Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivity.this,"Registration Error",Toast.LENGTH_LONG).show();
                         }
 
                     }
@@ -136,15 +131,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                         // signed in user can be handled in the listener.
                         if (!task.isSuccessful()) {
                             Log.w(TAG, "signInWithEmail:failed", task.getException());
-                            Toast.makeText(Login.this,"Error",Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivity.this,"Error",Toast.LENGTH_LONG).show();
                         }
                         else{
-                            Toast.makeText(Login.this,"Connection success",Toast.LENGTH_LONG).show();
-                            //setContentView(R.layout.activity_user);
+                            //Toast.makeText(LoginActivity.this,"Connection success",Toast.LENGTH_LONG).show();
+                            //setContentView(R.layout.activity_main);
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                             if (user != null) {
                                 // Name, email address, and profile photo Url
-                                String name = user.getDisplayName();
                                 String email = user.getEmail();
 
                                 // The user's ID, unique to the Firebase project. Do NOT use this value to
@@ -152,7 +146,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                                 // FirebaseUser.getToken() instead.
 
                                 String uid = user.getUid();
-                                Toast.makeText(Login.this,uid,Toast.LENGTH_LONG).show();
+                                //Toast.makeText(LoginActivity.this,email,Toast.LENGTH_LONG).show();
+
+                                setContentView(R.layout.activity_main);
                             }
                         }
 
@@ -169,7 +165,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                 .setMessage(getResources().getString(R.string.testdataQuestion))
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(Login.this, "backup en cours...", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "backup en cours...", Toast.LENGTH_SHORT).show();
                         PFG_Fulltopia.test_Add_DATA();
                     }
                 })
