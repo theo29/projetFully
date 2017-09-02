@@ -1,5 +1,6 @@
 package com.hesso.projetfully;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -45,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
         TestGius.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent communityType = new Intent(MainActivity.this, CommunityTypesMainActivity.class);
+                startActivity(communityType);//Start the same Activity
 
             }
         });
