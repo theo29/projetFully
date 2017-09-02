@@ -23,6 +23,7 @@ import com.hesso.projetfully.bll.PFG_Fulltopia;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import static com.hesso.projetfully.bll.PFG_Fulltopia.MENU_REMOVE;
 import static com.hesso.projetfully.bll.PFG_Fulltopia.MENU_SELECT;
@@ -42,19 +43,9 @@ public class CommunityTypesMainActivity extends AppCompatActivity {
         // enable the app icon as the up buton
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-// Source de données
-//        CommunityTypeDataSource communitytypeDS = new CommunityTypeDataSource(this);
-//        communitytypes = communitytypeDS.getAllCommunityTypes();
-        PFG_Fulltopia.test_List_CommunityTypes();
-        for (int i=0;i<100000;i++){
-            if (PFG_Fulltopia.gaeCommunityTypes != null){
-                communitytypes = PFG_Fulltopia.gaeCommunityTypes;
-                break;
-            }
-        }
+        // Source de données
+        communitytypes = PFG_Fulltopia.getAll_CommunityTypes();
 
-
-//        communitytypes = PFG_Fulltopia.gaeCommunityTypes;
 // intent pour detail
 //        intentCommunityType = new Intent(this, CommunityTypesPageActivity.class);
 
@@ -110,8 +101,9 @@ public class CommunityTypesMainActivity extends AppCompatActivity {
 
     //start CommunityTypePageActivit of choosed communitytype
     private void startActivity_CommunityTypeSelected(int position) {
-        intentCommunityType.putExtra(EXTRA_COMMUNITYTYPE_ID, communitytypes.get(position).getId());
-        startActivity(intentCommunityType);
+        Toast.makeText(this, "You have selected: " + communitytypes.get(position).getDescription(), Toast.LENGTH_LONG).show();
+//        intentCommunityType.putExtra(EXTRA_COMMUNITYTYPE_ID, communitytypes.get(position).getId());
+//        startActivity(intentCommunityType);
     }
 
     //start CommunityTypeEditActivit of choosed communitytype into the ContextMenu

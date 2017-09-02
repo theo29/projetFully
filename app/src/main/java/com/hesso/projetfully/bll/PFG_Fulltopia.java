@@ -1,17 +1,15 @@
 package com.hesso.projetfully.bll;
 
-import android.content.Context;
-import android.util.Log;
-import android.widget.Toast;
-
 import com.example.theop.myapplication.backend.gAEUserApi.model.GAEUser;
 import com.example.theop.myapplication.backend.gAECommunityTypeApi.model.GAECommunityType;
 
+import com.google.android.gms.common.api.Status;
 import com.hesso.projetfully.GAE.EndpointsAsyncTaskCommunityType;
 import com.hesso.projetfully.GAE.EndpointsAsyncTaskUser;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by GCI on 14.07.2017.
@@ -30,39 +28,32 @@ public class PFG_Fulltopia {
 
     public static final int MENU_SELECT = 1;
     public static final int MENU_REMOVE = 2;
-    public final static String MODIFY_LOAN = "MODIFY_LOAN";
-    public static List<GAECommunityType> gaeCommunityTypes = null;
-    public static void test_Add_DATA(){
+//    public final static String MODIFY_LOAN = "MODIFY_LOAN";
+    public static void test_Add_DATA() {
         test_Add_DATA_Users();
         test_Add_DATA_CommunityTypes();
-        test_List_CommunityTypes();
+//        getAll_CommunityTypes();
 
     }
 
-    public static void test_List_CommunityTypes() {
-        List<GAECommunityType> gaeCommunityTypes;
+    public static List<GAECommunityType> getAll_CommunityTypes() {
+        List<GAECommunityType> gaeCommunityTypes = new ArrayList<GAECommunityType>();
 
-        gaeCommunityTypes = new ArrayList<GAECommunityType>();
-        String list = "LIST_ALL";
-        //gaeCommunityTypes =
-        new EndpointsAsyncTaskCommunityType().execute();
-        for (int i=0;i<100000;i++){
-
+        try {
+            gaeCommunityTypes = new EndpointsAsyncTaskCommunityType().execute().get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
         }
-//        if (PFG_Fulltopia.gaeCommunityTypes != null) {
-//            for (GAECommunityType gaeuser : PFG_Fulltopia.gaeCommunityTypes) {
-//                //Log.i(TAG, "CommunityType : " + gaeuser.getName() + " " + gaeuser.getLastname());
-////                Log.i(TAG, "CommunityType : " + gaeuser.toString());
-//            }
-//        }
+        if (gaeCommunityTypes == null){
+            gaeCommunityTypes = new ArrayList<GAECommunityType>();
+        }
 
+        return gaeCommunityTypes;
     }
-
-    private static void test_Add_DATA_CommunityTypes() {
-        List<GAECommunityType> gaeCommunityTypes;
-
-        gaeCommunityTypes = new ArrayList<GAECommunityType>();
-
+    public static List<GAECommunityType> get_TestDATA_CommunityTypes() {
+        List<GAECommunityType> gaeCommunityTypes = new ArrayList<GAECommunityType>();
         // add in the GAE
         GAECommunityType gaeCommunityType = new GAECommunityType();
         gaeCommunityType.setDescription("Sport");
@@ -87,6 +78,12 @@ public class PFG_Fulltopia {
         gaeCommunityType = new GAECommunityType();
         gaeCommunityType.setDescription("Home");
         gaeCommunityTypes.add(gaeCommunityType);
+
+        return gaeCommunityTypes;
+    }
+    private static void test_Add_DATA_CommunityTypes() {
+
+        List<GAECommunityType> gaeCommunityTypes = get_TestDATA_CommunityTypes();
 
         if (gaeCommunityTypes.size() > 0) {
             new EndpointsAsyncTaskCommunityType(gaeCommunityTypes).execute();

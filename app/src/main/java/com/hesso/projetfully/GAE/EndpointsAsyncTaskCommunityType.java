@@ -1,6 +1,7 @@
 package com.hesso.projetfully.GAE;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.theop.myapplication.backend.gAECommunityTypeApi.GAECommunityTypeApi;
 import com.example.theop.myapplication.backend.gAECommunityTypeApi.model.GAECommunityType;
@@ -28,10 +29,6 @@ public class EndpointsAsyncTaskCommunityType extends AsyncTask<Void, Void, List<
 
     public EndpointsAsyncTaskCommunityType(List<GAECommunityType> gaeCommunityTypes) {
         this.gaeCommunityTypes = gaeCommunityTypes;
-    }
-
-    public EndpointsAsyncTaskCommunityType(String list) {
-
     }
 
 
@@ -94,18 +91,10 @@ public class EndpointsAsyncTaskCommunityType extends AsyncTask<Void, Void, List<
     //of this method
     @Override
     protected void onPostExecute(List<GAECommunityType> result) {
-        if (result != null) {
-/*
-            for (GAECommunityType gaeuser : result) {
+            for (GAECommunityType gae : result) {
                 //Log.i(TAG, "CommunityType : " + gaeuser.getName() + " " + gaeuser.getLastname());
-                Log.i(TAG, "CommunityType : " + gaeuser.toString());
+                Log.i(TAG, "CommunityType : " + gae.getDescription());
             }
-  */
-            PFG_Fulltopia.gaeCommunityTypes = result;
-        }else{
-            PFG_Fulltopia.gaeCommunityTypes = new ArrayList<GAECommunityType>();
-        }
-
     }
 }
 
