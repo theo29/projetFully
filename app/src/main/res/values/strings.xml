@@ -3,4 +3,7 @@
     <string name="title_activity_selected_community">SelectedCommunity</string>
     <string name="testdataTitle">Test data</string>
     <string name="testdataQuestion">Voulez-vous vraiment ajouter les data pour test?</string>
+    <string name="communitytypes">Types of community</string>
+    <string name="refresh">Refresh</string>
+    <string name="settings">Settings</string>
 </resources>
