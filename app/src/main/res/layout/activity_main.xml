@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.hesso.projetfully.MainActivity">
+    android:orientation="vertical">
 
-    <LinearLayout android:layout_centerVertical="true"
-        android:layout_width="368dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="8dp">>
-        <Button
+
+<Button
             android:id="@+id/TestAxel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -20,15 +14,24 @@
             tools:layout_editor_absoluteX="102dp"
             tools:layout_editor_absoluteY="16dp" />
 
-        <Button
-            android:id="@+id/TestGius"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TestGius"
-            tools:layout_editor_absoluteX="102dp"
-            tools:layout_editor_absoluteY="76dp" />
+    <Button
+        android:id="@+id/TestGius"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TestGius"
+        tools:layout_editor_absoluteX="102dp"
+        tools:layout_editor_absoluteY="76dp" />
 
-        <Button
+    <Button
+        android:id="@+id/CommunityType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="btnClickCommunityType"
+        android:text="Types of Community"
+        tools:layout_editor_absoluteX="102dp"
+        tools:layout_editor_absoluteY="76dp" />
+
+    <Button
             android:id="@+id/TestTheo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -39,5 +42,3 @@
 
     </LinearLayout>
 
-
-</android.support.constraint.ConstraintLayout>

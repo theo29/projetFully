@@ -69,4 +69,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    public void btnClickCommunityType(View view) {
+        Intent communityType = new Intent(MainActivity.this, CommunityTypesMainActivity.class);
+        startActivity(communityType);//Start the same Activity
+    }
 }
