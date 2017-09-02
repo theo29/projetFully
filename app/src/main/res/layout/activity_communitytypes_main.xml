@@ -32,10 +32,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
             android:layout_margin="16dp"
-            android:layout_weight="0.1"/>
+            android:layout_weight="0.1"
+            android:onClick="showWritersAdd"
+            android:src="@android:drawable/ic_menu_add"/>
 
-        <!--   android:onClick="showWritersAdd"
-            android:src="@drawable/ic_add" />-->
 
     </LinearLayout>
 

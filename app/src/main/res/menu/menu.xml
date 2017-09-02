@@ -2,14 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:projetFully="http://schemas.android.com/apk/res-auto">
 
+
     <item android:id="@+id/reload"
         android:title="@string/refresh"
-        projetFully:showAsAction="ifRoom"/>
-        <!--android:icon="@drawable/ic_action_reload" /> -->
-
+        projetFully:showAsAction="ifRoom"
+        android:icon="@android:drawable/stat_notify_sync_noanim"
+            />
     <item android:id="@+id/settings"
         android:title="@string/settings"
-        projetFully:showAsAction="ifRoom"/>
-    <!-- android:icon="@drawable/ic_settings" -->
+        projetFully:showAsAction="ifRoom"
+        android:icon="@android:drawable/arrow_down_float"/>
+
+
+
 
 </menu>
