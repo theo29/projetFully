@@ -3,6 +3,7 @@ package com.hesso.projetfully;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -24,13 +25,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
         TestAxel = (Button) findViewById(R.id.TestAxel);
         TestGius = (Button) findViewById(R.id.TestGius);
         TestTheo = (Button) findViewById(R.id.TestTheo);
 
         firebaseAuth = FirebaseAuth.getInstance();
-
-
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
 
@@ -38,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         TestAxel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, UserCallActivity.class);
+                startActivity(intent);
 
             }
         });
