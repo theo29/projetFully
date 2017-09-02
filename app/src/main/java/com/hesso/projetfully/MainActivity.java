@@ -62,12 +62,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
-
     }
 
     public void btnClickCommunityType(View view) {
