@@ -1,5 +1,9 @@
 package com.hesso.projetfully.bll;
 
+import android.content.Context;
+import android.util.Log;
+import android.widget.Toast;
+
 import com.example.theop.myapplication.backend.gAEUserApi.model.GAEUser;
 import com.example.theop.myapplication.backend.gAECommunityTypeApi.model.GAECommunityType;
 
@@ -27,10 +31,30 @@ public class PFG_Fulltopia {
     public static final int MENU_SELECT = 1;
     public static final int MENU_REMOVE = 2;
     public final static String MODIFY_LOAN = "MODIFY_LOAN";
-
+    public static List<GAECommunityType> gaeCommunityTypes = null;
     public static void test_Add_DATA(){
         test_Add_DATA_Users();
         test_Add_DATA_CommunityTypes();
+        test_List_CommunityTypes();
+
+    }
+
+    public static void test_List_CommunityTypes() {
+        List<GAECommunityType> gaeCommunityTypes;
+
+        gaeCommunityTypes = new ArrayList<GAECommunityType>();
+        String list = "LIST_ALL";
+        //gaeCommunityTypes =
+        new EndpointsAsyncTaskCommunityType().execute();
+        for (int i=0;i<100000;i++){
+
+        }
+//        if (PFG_Fulltopia.gaeCommunityTypes != null) {
+//            for (GAECommunityType gaeuser : PFG_Fulltopia.gaeCommunityTypes) {
+//                //Log.i(TAG, "CommunityType : " + gaeuser.getName() + " " + gaeuser.getLastname());
+////                Log.i(TAG, "CommunityType : " + gaeuser.toString());
+//            }
+//        }
 
     }
 

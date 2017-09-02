@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.theop.myapplication.backend.gAECommunityTypeApi.model.GAECommunityType;
+import com.hesso.projetfully.bll.PFG_Fulltopia;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +45,16 @@ public class CommunityTypesMainActivity extends AppCompatActivity {
 // Source de données
 //        CommunityTypeDataSource communitytypeDS = new CommunityTypeDataSource(this);
 //        communitytypes = communitytypeDS.getAllCommunityTypes();
+        PFG_Fulltopia.test_List_CommunityTypes();
+        for (int i=0;i<100000;i++){
+            if (PFG_Fulltopia.gaeCommunityTypes != null){
+                communitytypes = PFG_Fulltopia.gaeCommunityTypes;
+                break;
+            }
+        }
+
+
+//        communitytypes = PFG_Fulltopia.gaeCommunityTypes;
 // intent pour detail
 //        intentCommunityType = new Intent(this, CommunityTypesPageActivity.class);
 
@@ -63,7 +74,7 @@ public class CommunityTypesMainActivity extends AppCompatActivity {
 
                 //Add Text to the layout
                 TextView textView1 = (TextView) view.findViewById(R.id.textView_communitytypes);
-                textView1.setText(communitytypes.get(position).toString());
+                textView1.setText(communitytypes.get(position).getDescription());
 
                 return view;
             }
@@ -89,8 +100,8 @@ public class CommunityTypesMainActivity extends AppCompatActivity {
 
             public boolean onItemLongClick(AdapterView<?> arg0, View v,
                                            int position, long id) {
-//                Toast.makeText(CommunityTypesMainActivity.this, "You have selected: " + communitytypes.get(position).toString(), Toast.LENGTH_LONG).show();
-                registerForContextMenu(list);
+                Toast.makeText(CommunityTypesMainActivity.this, "You have selected: " + communitytypes.get(position).getDescription(), Toast.LENGTH_LONG).show();
+//                registerForContextMenu(list);
                 return false;
             }
         });
@@ -105,7 +116,7 @@ public class CommunityTypesMainActivity extends AppCompatActivity {
 
     //start CommunityTypeEditActivit of choosed communitytype into the ContextMenu
     private void startActivity_CommunityTypeEditSelected(int position) {
-        Toast.makeText(this, "You have selected: " + communitytypes.get(position).toString(), Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "You have selected: " + communitytypes.get(position).getDescription(), Toast.LENGTH_LONG).show();
 //        communitytype = new CommunityTypeDataSource(this).getCommunityTypeById(communitytypes.get(position).getId());
 //        Intent intent = new Intent(this, CommunityTypesEditActivity.class);
 //        intent.putExtra(MODIFY_WRITER, communitytype);
@@ -156,7 +167,7 @@ public class CommunityTypesMainActivity extends AppCompatActivity {
 
     // Delete a communitytype by option menu
     public void delete_item(int position) {
-        String title = communitytypes.get(position).toString();
+        String title = communitytypes.get(position).getDescription();
 //        CommunityTypeDataSource communitytypeDS = new CommunityTypeDataSource(this);
 //        communitytypeDS.deleteCommunityType(communitytypes.get(position).getId());
 //        Toast.makeText(this, getResources().getString(R.string.deleted) + title, Toast.LENGTH_SHORT).show();

@@ -1,5 +1,4 @@
 package com.hesso.projetfully.GAE;
-
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -14,31 +13,25 @@ import com.hesso.projetfully.bll.PFG_Fulltopia;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-/**
- * Created by GCI on 25.08.2017.
- */
-
-//public class EndpointsAsyncTaskCommunityType{
-//
-//}
-
-
 public class EndpointsAsyncTaskCommunityType extends AsyncTask<Void, Void, List<GAECommunityType>> {
     private static final String TAG = EndpointsAsyncTaskCommunityType.class.getName();
-   private static GAECommunityTypeApi gaeCommunityTypeApi = null;
+    private static GAECommunityTypeApi gaeCommunityTypeApi = null;
     private GAECommunityType gaeCommunityType = null;
     private List<GAECommunityType> gaeCommunityTypes = null;
 
-    EndpointsAsyncTaskCommunityType() {
+    public EndpointsAsyncTaskCommunityType() {
     }
 
-    EndpointsAsyncTaskCommunityType(GAECommunityType gaeCommunityType) {
+    public EndpointsAsyncTaskCommunityType(GAECommunityType gaeCommunityType) {
         this.gaeCommunityType = gaeCommunityType;
     }
 
     public EndpointsAsyncTaskCommunityType(List<GAECommunityType> gaeCommunityTypes) {
         this.gaeCommunityTypes = gaeCommunityTypes;
+    }
+
+    public EndpointsAsyncTaskCommunityType(String list) {
+
     }
 
 
@@ -86,8 +79,10 @@ public class EndpointsAsyncTaskCommunityType extends AsyncTask<Void, Void, List<
                 Log.i(TAG, "insert gaeuser " + gaeCommunityType.getId());
             }
 
-            // and for instance return the list of all employees
-            return gaeCommunityTypeApi.list().execute().getItems();
+            // and for instance return the list of all items
+            //       return gaeCommunityTypeApi.list().execute().getItems();
+            List<GAECommunityType> lstCommunityType = gaeCommunityTypeApi.list().execute().getItems();
+            return lstCommunityType;
 
         } catch (IOException e) {
             Log.e(TAG, e.toString());
@@ -100,11 +95,17 @@ public class EndpointsAsyncTaskCommunityType extends AsyncTask<Void, Void, List<
     @Override
     protected void onPostExecute(List<GAECommunityType> result) {
         if (result != null) {
+/*
             for (GAECommunityType gaeuser : result) {
                 //Log.i(TAG, "CommunityType : " + gaeuser.getName() + " " + gaeuser.getLastname());
                 Log.i(TAG, "CommunityType : " + gaeuser.toString());
             }
+  */
+            PFG_Fulltopia.gaeCommunityTypes = result;
+        }else{
+            PFG_Fulltopia.gaeCommunityTypes = new ArrayList<GAECommunityType>();
         }
+
     }
 }
 
