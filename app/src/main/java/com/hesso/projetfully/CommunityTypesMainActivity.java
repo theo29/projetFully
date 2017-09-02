@@ -18,19 +18,19 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-//import com.example.gci.mylibraryapp.db.adapter.CommunityTypeDataSource;
-//import com.example.gci.mylibraryapp.db.object.CommunityType;
 import com.example.theop.myapplication.backend.gAECommunityTypeApi.model.GAECommunityType;
 
+import java.util.ArrayList;
 import java.util.List;
 
-//import static com.example.gci.mylibraryapp.bll.PFG_LibraryApp.MENU_REMOVE;
-//import static com.example.gci.mylibraryapp.bll.PFG_LibraryApp.MENU_SELECT;
-//import static com.example.gci.mylibraryapp.bll.PFG_LibraryApp.MODIFY_WRITER;
+import static com.hesso.projetfully.bll.PFG_Fulltopia.MENU_REMOVE;
+import static com.hesso.projetfully.bll.PFG_Fulltopia.MENU_SELECT;
+
+//import static com.hesso.projetfully.bll.PFG_Fulltopia.MODIFY_WRITER;
 
 public class CommunityTypesMainActivity extends AppCompatActivity {
     public static final String EXTRA_COMMUNITYTYPE_ID = "com.hesso.projetfully.COMMUNITYTYPE_ID";
-    private List<GAECommunityType> communitytypes;
+    private List<GAECommunityType> communitytypes = new ArrayList<GAECommunityType>();
     private GAECommunityType communitytype;
     private Intent intentCommunityType;
 
@@ -105,7 +105,7 @@ public class CommunityTypesMainActivity extends AppCompatActivity {
 
     //start CommunityTypeEditActivit of choosed communitytype into the ContextMenu
     private void startActivity_CommunityTypeEditSelected(int position) {
-        // Toast.makeText(CustomersMainActivity.this, "You have selected: " + customers.get(position).toString(), Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "You have selected: " + communitytypes.get(position).toString(), Toast.LENGTH_LONG).show();
 //        communitytype = new CommunityTypeDataSource(this).getCommunityTypeById(communitytypes.get(position).getId());
 //        Intent intent = new Intent(this, CommunityTypesEditActivity.class);
 //        intent.putExtra(MODIFY_WRITER, communitytype);
@@ -117,11 +117,11 @@ public class CommunityTypesMainActivity extends AppCompatActivity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-//        menu.setHeaderTitle(getResources().getString(R.string.contextmenu));
-//        menu.add(0, MENU_SELECT, 0, getResources().getString(R.string.edit) + " " + getResources().getString(R.string.communitytype));
-//        menu.add(0, MENU_REMOVE, 0, getResources().getString(R.string.delete));
+        menu.setHeaderTitle(getResources().getString(R.string.contextmenu));
+        menu.add(0, MENU_SELECT, 0, getResources().getString(R.string.edit) + " " + getResources().getString(R.string.communitytype));
+        menu.add(0, MENU_REMOVE, 0, getResources().getString(R.string.delete));
     }
-/*
+
     //Configuration des différentes actions possible
     @Override
     public boolean onContextItemSelected(MenuItem item) {
@@ -130,30 +130,30 @@ public class CommunityTypesMainActivity extends AppCompatActivity {
             //case 1: we start edit activity
             case MENU_SELECT:
 //                startActivity_CommunityTypeEditSelected(info.position);
-//                return true;
-//            //we delete the item
-//            case MENU_REMOVE:
-//                //For be sur, we show an alert dialog if yes or not, the user want to delete the item
-//                new AlertDialog.Builder(this)
-//                        .setTitle(getResources().getString(R.string.delete_sur))
-//                        .setMessage(getResources().getString(R.string.delete_question))
-//                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-//                            public void onClick(DialogInterface dialog, int which) {
-//                                delete_item(info.position);
-//                            }
-//                        })
-//                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-//                            public void onClick(DialogInterface dialog, int which) {
-//                                return;
-//                            }
-//                        })
-//                        .setIcon(android.R.drawable.ic_dialog_alert)
-//                        .show();
-//            default:
-//                return super.onContextItemSelected(item);
-//        }
+                return true;
+    //we delete the item
+            case MENU_REMOVE:
+                //For be sur, we show an alert dialog if yes or not, the user want to delete the item
+                new AlertDialog.Builder(this)
+                        .setTitle(getResources().getString(R.string.delete))
+                        .setMessage(getResources().getString(R.string.delete_question))
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                delete_item(info.position);
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                return;
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+            default:
+                return super.onContextItemSelected(item);
+        }
     }
-*/
+
     // Delete a communitytype by option menu
     public void delete_item(int position) {
         String title = communitytypes.get(position).toString();
@@ -205,7 +205,7 @@ public class CommunityTypesMainActivity extends AppCompatActivity {
 
     // load a new activity for add a new communitytype
     public void showCommunityTypesAdd(View view) {
-//        // TODO: 17.11.2016
+
 //        Intent showCommunityTypesAdd = new Intent(this, CommunityTypesEditActivity.class);
 //        startActivity(showCommunityTypesAdd);
     }

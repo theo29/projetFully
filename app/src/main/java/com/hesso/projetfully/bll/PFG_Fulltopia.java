@@ -24,6 +24,10 @@ public class PFG_Fulltopia {
     // cloud
     public static final String _HTTPS_APP_ID_ = "https://projetfully.appspot.com/_ah/api/";
 
+    public static final int MENU_SELECT = 1;
+    public static final int MENU_REMOVE = 2;
+    public final static String MODIFY_LOAN = "MODIFY_LOAN";
+
     public static void test_Add_DATA(){
         test_Add_DATA_Users();
         test_Add_DATA_CommunityTypes();

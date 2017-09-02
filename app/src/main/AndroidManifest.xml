@@ -22,11 +22,45 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- MainActivity activities -->
+        <activity
+            android:name=".MainActivity"
+            android:parentActivityName=".MainActivity">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hesso.projetfully.MainActivity" />
+        </activity>
+
+        <!-- CommunityTypesMainActivity activities -->
+        <activity
+            android:name=".CommunityTypesMainActivity"
+            android:parentActivityName=".MainActivity">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hesso.projetfully.MainActivity" />
+        </activity>
+
+        <!-- Settings activities -->
+        <activity
+            android:name=".SettingsActivity"
+            android:parentActivityName=".MainActivity">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hesso.projetfully.MainActivity" />
+        </activity>
+
+
+        <!-- SelectedCommunity ????? activities -->
         <activity
             android:name=".SelectedCommunity"
             android:label="@string/title_activity_selected_community"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MainActivity"></activity>
+
+
     </application>
 
 </manifest>
