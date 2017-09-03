@@ -1,71 +1,41 @@
 package com.hesso.projetfully;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.hesso.projetfully.bll.PFG_Fulltopia;
 
+//last test
 public class MainActivity extends AppCompatActivity {
-
-    private FirebaseAuth firebaseAuth;
-
-    private Button TestAxel;
-    private Button TestGius;
-    private Button TestTheo;
-
-
+// commentaire test GCI
+    //commentaire theo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-
-
-        TestAxel = (Button) findViewById(R.id.TestAxel);
-        TestGius = (Button) findViewById(R.id.TestGius);
-        TestTheo = (Button) findViewById(R.id.TestTheo);
-
-        firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-
-
-        TestAxel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, UserCallActivity.class);
-                startActivity(intent);
-
-            }
-        });
-
-
-        TestGius.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent communityType = new Intent(MainActivity.this, CommunityTypesMainActivity.class);
-                startActivity(communityType);//Start the same Activity
-
-            }
-        });
-
-
-        TestTheo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
+        //setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_welcome_page);
     }
 
-    public void btnClickCommunityType(View view) {
-        Intent communityType = new Intent(MainActivity.this, CommunityTypesMainActivity.class);
-        startActivity(communityType);//Start the same Activity
+    public void testDataGAE(View view) {
+        new AlertDialog.Builder(this)
+                .setTitle(getResources().getString(R.string.testdataTitle))
+                .setMessage(getResources().getString(R.string.testdataQuestion))
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(MainActivity.this, "backup en cours...", Toast.LENGTH_SHORT).show();
+                        PFG_Fulltopia.test_Add_DATA();
+                    }
+                })
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        return;
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
     }
 }

@@ -17,6 +17,12 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        /*
+        Pillet - Play services and Firebase dependencies are now available via maven.google.com with the release of version 11.2.0 of Google Play services and Firebase.
+         */
+        maven {
+            url "https://maven.google.com"
+        }
     }
 }
 
