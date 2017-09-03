@@ -184,4 +184,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
 
     }
+
+    //Théo
+    //OnCLick go to NotificationLayout
+    public void onClickBackToSelectActionFromLogin(View w){
+        Intent intent = new Intent(LoginActivity.this,NotificationActivity.class);
+        startActivity(intent);
+    }
 }

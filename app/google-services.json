@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "289388490459-f1bdsu2dd3a5csdm242ggutd4nmgpoeh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hesso.projetfully",
+            "certificate_hash": "47d7d2d6224e4702c158aa526fbbc7d63dce1305"
+          }
+        },
+        {
           "client_id": "289388490459-7a9121ra1mjfevtalkkiol75dkcdfugq.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

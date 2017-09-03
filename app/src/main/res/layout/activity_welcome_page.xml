@@ -85,6 +85,8 @@
                 android:text="Not member? Follow the link to create an account" />
 
 
+
+
         </LinearLayout>
     </ScrollView>
 

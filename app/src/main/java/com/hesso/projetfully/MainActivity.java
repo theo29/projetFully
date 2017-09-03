@@ -11,8 +11,8 @@ import com.hesso.projetfully.bll.PFG_Fulltopia;
 
 //last test
 public class MainActivity extends AppCompatActivity {
-// commentaire test GCI
-    //commentaire theo
+    private static final String TAG = "MainActivity";
+    // commentaire test GCI
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,5 +37,7 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .show();
+
+
     }
 }
