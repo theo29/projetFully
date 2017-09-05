@@ -43,7 +43,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void testDataGAE(View view) {
+     public void btnClickCommunityType(View view) {
+        Intent intent = new Intent(MainActivity.this, CommunityTypesMainActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickTestGius(View view) {
         new AlertDialog.Builder(this)
                 .setTitle(getResources().getString(R.string.testdataTitle))
                 .setMessage(getResources().getString(R.string.testdataQuestion))
@@ -60,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .show();
+
     }
-
-
 }

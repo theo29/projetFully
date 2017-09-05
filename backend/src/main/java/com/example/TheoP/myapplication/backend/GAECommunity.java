@@ -16,22 +16,18 @@ public class GAECommunity {
     private Long id;
     private String name;
     private String descriptionLong;
-    private String picture;
-    private GAECommunity_Type community_type;
-    private Date dateTimeCreated;
-    private GAEUser useradmin;
+    private long idCommunity_type;
+    private String idUserAdmin;
 
     public GAECommunity() {
 
     }
 
-    public GAECommunity(String name, String descriptionLong, String picture, GAECommunity_Type community_type, Date dateTimeCreated, GAEUser useradmin) {
+    public GAECommunity(String name, String descriptionLong, long idCommunity_type, String idUserAdmin) {
         this.name = name;
         this.descriptionLong = descriptionLong;
-        this.picture = picture;
-        this.community_type = community_type;
-        this.dateTimeCreated = dateTimeCreated;
-        this.useradmin = useradmin;
+        this.idCommunity_type = idCommunity_type;
+        this.idUserAdmin = idUserAdmin;
     }
 
     @Override
@@ -56,36 +52,20 @@ public class GAECommunity {
         this.name = name;
     }
 
-    public String getPicture() {
-        return picture;
+    public long getIdCommunity_type() {
+        return idCommunity_type;
     }
 
-    public void setPicture(String picture) {
-        this.picture = picture;
+    public void setIdCommunity_type(long idCommunity_type) {
+        this.idCommunity_type = idCommunity_type;
     }
 
-    public GAECommunity_Type getCommunity_type() {
-        return community_type;
+    public String getIdUserAdmin() {
+        return idUserAdmin;
     }
 
-    public void setCommunity_type(GAECommunity_Type community_type) {
-        this.community_type = community_type;
-    }
-
-    public Date getDateTimeCreated() {
-        return dateTimeCreated;
-    }
-
-    public void setDateTimeCreated(Date dateTimeCreated) {
-        this.dateTimeCreated = dateTimeCreated;
-    }
-
-    public GAEUser getUseradmin() {
-        return useradmin;
-    }
-
-    public void setUseradmin(GAEUser useradmin) {
-        this.useradmin = useradmin;
+    public void setIdUserAdmin(String idUserAdmin) {
+        this.idUserAdmin = idUserAdmin;
     }
 
     public Long getId() {

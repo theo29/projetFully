@@ -38,13 +38,6 @@
             android:text="Signin" />
 
         <Button
-            android:id="@+id/btnTestData"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="testDataGAE"
-            android:text="Test DATA" />
-
-        <Button
             android:id="@+id/btnNotif"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -24,6 +24,7 @@
         android:id="@+id/TestGius"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="onClickTestGius"
         android:text="TestGius"
         tools:layout_editor_absoluteX="102dp"
         tools:layout_editor_absoluteY="76dp" />

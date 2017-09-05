@@ -141,7 +141,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             if (user != null) {
                                 // Name, email address, and profile photo Url
                                 String email = user.getEmail();
-
                                 // The user's ID, unique to the Firebase project. Do NOT use this value to
                                 // authenticate with your backend server, if you have one. Use
                                 // FirebaseUser.getToken() instead.
@@ -158,26 +157,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     }
                 });
 
-    }
-
-    //bouton test à Giuseppe
-    public void testDataGAE(View view) {
-        new AlertDialog.Builder(this)
-                .setTitle(getResources().getString(R.string.testdataTitle))
-                .setMessage(getResources().getString(R.string.testdataQuestion))
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(LoginActivity.this, "backup en cours...", Toast.LENGTH_SHORT).show();
-                        PFG_Fulltopia.test_Add_DATA();
-                    }
-                })
-                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        return;
-                    }
-                })
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .show();
     }
 
     @Override

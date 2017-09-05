@@ -2,9 +2,13 @@ package com.hesso.projetfully.bll;
 
 
 import com.example.theop.myapplication.backend.gAECallApi.model.GAECall;
+import com.example.theop.myapplication.backend.gAECommunityApi.model.GAECommunity;
 import com.example.theop.myapplication.backend.gAECommunityTypeApi.model.GAECommunityType;
 import com.example.theop.myapplication.backend.gAEUserApi.model.GAEUser;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.hesso.projetfully.GAE.EndpointsAsyncTaskCall;
+import com.hesso.projetfully.GAE.EndpointsAsyncTaskCommunity;
 import com.hesso.projetfully.GAE.EndpointsAsyncTaskCommunityType;
 import com.hesso.projetfully.GAE.EndpointsAsyncTaskUser;
 
@@ -30,9 +34,17 @@ public class PFG_Fulltopia {
     public static final int MENU_SELECT = 1;
     public static final int MENU_REMOVE = 2;
 //    public final static String MODIFY_LOAN = "MODIFY_LOAN";
+    public static String getCurrentUserID(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = "";
+        if (user != null)
+            uid = user.getUid();
+        return uid;
+    }
     public static void test_Add_DATA() {
         test_Add_DATA_Users();
         test_Add_DATA_CommunityTypes();
+        test_Add_DATA_Community();
 //        getAll_CommunityTypes();
 
     }
@@ -149,6 +161,53 @@ public class PFG_Fulltopia {
 
         if (gaeUsers.size() > 0) {
             new EndpointsAsyncTaskUser(gaeUsers).execute();
+        }
+    }
+
+    private static void test_Add_DATA_Community() {
+        List<GAECommunity> gaeCommunities = new ArrayList<GAECommunity>();;
+
+//        List<GAECommunityType> gaeCommunityTypes = new ArrayList<GAECommunityType>();
+//        gaeCommunityTypes = getAll_CommunityTypes();
+        GAECommunityType gaeCommunityType = getAll_CommunityTypes().get(1);
+
+        GAECommunity gaeCommunity;
+
+        // add in the gaeCommunities
+        gaeCommunity = new GAECommunity();
+        gaeCommunity.setName("Ma communeauté de "+gaeCommunityType.getDescription());
+        gaeCommunity.setDescriptionLong("ma description longue "+"; id:"+gaeCommunityType.getId());
+        gaeCommunity.setIdUserAdmin(PFG_Fulltopia.getCurrentUserID());
+        gaeCommunity.setIdCommunityType(gaeCommunityType.getId());
+        gaeCommunities.add(gaeCommunity);
+
+        // add in the gaeCommunities
+        gaeCommunity = new GAECommunity();
+        gaeCommunity.setName("Ma 2ème communeauté de "+gaeCommunityType.getDescription());
+        gaeCommunity.setDescriptionLong("ma description longue "+"; id:"+gaeCommunityType.getId());
+        gaeCommunity.setIdUserAdmin(PFG_Fulltopia.getCurrentUserID());
+        gaeCommunity.setIdCommunityType(gaeCommunityType.getId());
+        gaeCommunities.add(gaeCommunity);
+
+        // add in the gaeCommunities
+        gaeCommunity = new GAECommunity();
+        gaeCommunity.setName("Voilà "+gaeCommunityType.getDescription());
+        gaeCommunity.setDescriptionLong("ma description longue "+"; id:"+gaeCommunityType.getId());
+        gaeCommunity.setIdUserAdmin(PFG_Fulltopia.getCurrentUserID());
+        gaeCommunity.setIdCommunityType(gaeCommunityType.getId());
+        gaeCommunities.add(gaeCommunity);
+
+        // add in the gaeCommunities
+        gaeCommunity = new GAECommunity();
+        gaeCommunity.setName("Communeauté pour "+gaeCommunityType.getDescription());
+        gaeCommunity.setDescriptionLong("ma description longue "+"; id:"+gaeCommunityType.getId());
+        gaeCommunity.setIdUserAdmin(PFG_Fulltopia.getCurrentUserID());
+        gaeCommunity.setIdCommunityType(gaeCommunityType.getId());
+        gaeCommunities.add(gaeCommunity);
+
+
+        if (gaeCommunities.size() > 0) {
+            new EndpointsAsyncTaskCommunity(gaeCommunities).execute();
         }
     }
 

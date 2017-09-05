@@ -77,7 +77,7 @@ public class GAECommunityEndpoint {
     public GAECommunity insert(GAECommunity gAECommunity) {
         // Typically in a RESTful API a POST does not have a known ID (assuming the ID is used in the resource path).
         // You should validate that gAECommunity.id has not been set. If the ID type is not supported by the
-        // Objectify ID generator, e.g. Long or String, then you should generate the unique ID yourself prior to saving.
+        // Objectify ID generator, e.g. long or String, then you should generate the unique ID yourself prior to saving.
         //
         // If your client provides the ID then you should probably use PUT instead.
         ofy().save().entity(gAECommunity).now();
