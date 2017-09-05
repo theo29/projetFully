@@ -6,13 +6,19 @@
     android:orientation="vertical">
 
 
-<Button
-            android:id="@+id/TestAxel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TestAxel"
-            tools:layout_editor_absoluteX="102dp"
-            tools:layout_editor_absoluteY="16dp" />
+    <Button
+        android:id="@+id/myCallsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="My calls"
+        tools:layout_editor_absoluteX="102dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <Button
+        android:id="@+id/CallsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Suscribed calls" />
 
     <Button
         android:id="@+id/TestGius"

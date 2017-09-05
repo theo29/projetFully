@@ -1,9 +1,10 @@
 package com.hesso.projetfully.bll;
 
-import com.example.theop.myapplication.backend.gAEUserApi.model.GAEUser;
-import com.example.theop.myapplication.backend.gAECommunityTypeApi.model.GAECommunityType;
 
-import com.google.android.gms.common.api.Status;
+import com.example.theop.myapplication.backend.gAECallApi.model.GAECall;
+import com.example.theop.myapplication.backend.gAECommunityTypeApi.model.GAECommunityType;
+import com.example.theop.myapplication.backend.gAEUserApi.model.GAEUser;
+import com.hesso.projetfully.GAE.EndpointsAsyncTaskCall;
 import com.hesso.projetfully.GAE.EndpointsAsyncTaskCommunityType;
 import com.hesso.projetfully.GAE.EndpointsAsyncTaskUser;
 
@@ -52,6 +53,41 @@ public class PFG_Fulltopia {
 
         return gaeCommunityTypes;
     }
+
+    public static List<GAECall> getCallUser() {
+        List<GAECall> gaeCalls = new ArrayList<GAECall>();
+
+        try {
+            gaeCalls = new EndpointsAsyncTaskCall().execute().get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        if (gaeCalls == null){
+            gaeCalls = new ArrayList<GAECall>();
+        }
+
+        return gaeCalls;
+    }
+
+    public static List<GAECommunityType> getUser_Community() {
+        List<GAECommunityType> gaeCommunityTypes = new ArrayList<GAECommunityType>();
+
+        try {
+            gaeCommunityTypes = new EndpointsAsyncTaskCommunityType().execute().get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        if (gaeCommunityTypes == null){
+            gaeCommunityTypes = new ArrayList<GAECommunityType>();
+        }
+
+        return gaeCommunityTypes;
+    }
+
     public static List<GAECommunityType> get_TestDATA_CommunityTypes() {
         List<GAECommunityType> gaeCommunityTypes = new ArrayList<GAECommunityType>();
         // add in the GAE
