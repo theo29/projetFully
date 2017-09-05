@@ -16,9 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-/**
- * Created by GCI on 14.07.2017.
- */
 public class PFG_Fulltopia {
     // options for running against local devappserver
     // - 10.0.2.2 is localhost's IP address in Android emulator
@@ -165,7 +162,7 @@ public class PFG_Fulltopia {
     }
 
     private static void test_Add_DATA_Community() {
-        List<GAECommunity> gaeCommunities = new ArrayList<GAECommunity>();;
+        List<GAECommunity> gaeCommunities = new ArrayList<GAECommunity>();
 
 //        List<GAECommunityType> gaeCommunityTypes = new ArrayList<GAECommunityType>();
 //        gaeCommunityTypes = getAll_CommunityTypes();
@@ -204,7 +201,6 @@ public class PFG_Fulltopia {
         gaeCommunity.setIdUserAdmin(PFG_Fulltopia.getCurrentUserID());
         gaeCommunity.setIdCommunityType(gaeCommunityType.getId());
         gaeCommunities.add(gaeCommunity);
-
 
         if (gaeCommunities.size() > 0) {
             new EndpointsAsyncTaskCommunity(gaeCommunities).execute();
