@@ -41,4 +41,47 @@ public class CommunityBLL {
             gaeCommunity = new GAECommunity();
         return gaeCommunity;
     }
+
+    public static boolean isValidCommunity(GAECommunity gaeCommunity) {
+        if (gaeCommunity.getName().isEmpty()) return false;
+        return !gaeCommunity.getDescriptionLong().isEmpty();
+
+    }
+
+    public static GAECommunity editCommunity(GAECommunity gaeCommunity) {
+        GAECommunity editedCommunity = new GAECommunity();
+
+        try {
+            if (gaeCommunity.getId() > 0) {
+                editedCommunity = new EndpointsAsyncTaskCommunity(gaeCommunity).execute().get().get(0);
+            } else {
+                new EndpointsAsyncTaskCommunity(gaeCommunity).execute().get();
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
+        }
+        if (editedCommunity == null)
+            editedCommunity = new GAECommunity();
+
+        return editedCommunity;
+
+    }
+
+    public static boolean remove(Long community_id) {
+        try {
+            new EndpointsAsyncTaskCommunity(PFG_Fulltopia.QUERY_REMOVE, community_id).execute().get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return false;
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+        return true;
+    }
 }

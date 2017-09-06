@@ -26,6 +26,7 @@ import java.util.List;
 
 import static com.hesso.projetfully.bll.PFG_Fulltopia.MENU_REMOVE;
 import static com.hesso.projetfully.bll.PFG_Fulltopia.MENU_SELECT;
+import static com.hesso.projetfully.bll.PFG_Fulltopia.MODIFY_COMMUNITY;
 
 //import static com.hesso.projetfully.bll.PFG_Fulltopia.MODIFY_WRITER;
 
@@ -108,11 +109,12 @@ public class CommunityMainActivity extends AppCompatActivity {
 
     //start CommunityEditActivit of choosed community into the ContextMenu
     private void startActivity_CommunityEditSelected(int position) {
-        Toast.makeText(this, "You have selected: " + communities.get(position).getName(), Toast.LENGTH_LONG).show();
-//        community = new CommunityDataSource(this).getCommunityById(communitys.get(position).getId());
-//        Intent intent = new Intent(this, CommunitysEditActivity.class);
-//        intent.putExtra(MODIFY_WRITER, community);
-//        startActivity(intent);
+        //       Toast.makeText(this, "You have selected: " + communities.get(position).getName(), Toast.LENGTH_LONG).show();
+        community = communities.get(position);
+
+        Intent intent = new Intent(this, CommunityEditActivity.class);
+        intent.putExtra(MODIFY_COMMUNITY, community.getId());
+        startActivity(intent);
 
     }
 
@@ -132,9 +134,9 @@ public class CommunityMainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             //case 1: we start edit activity
             case MENU_SELECT:
-//                startActivity_CommunityEditSelected(info.position);
+                startActivity_CommunityEditSelected(info.position);
                 return true;
-            //we delete the item
+            //Delete the item
             case MENU_REMOVE:
                 //For be sur, we show an alert dialog if yes or not, the user want to delete the item
                 new AlertDialog.Builder(this)
@@ -160,9 +162,8 @@ public class CommunityMainActivity extends AppCompatActivity {
     // Delete a community by option menu
     public void delete_item(int position) {
         String title = communities.get(position).getName();
-//        CommunityDataSource communityDS = new CommunityDataSource(this);
-//        communityDS.deleteCommunity(communitys.get(position).getId());
-//        Toast.makeText(this, getResources().getString(R.string.deleted) + title, Toast.LENGTH_SHORT).show();
+        CommunityBLL.remove(communities.get(position).getId());
+        Toast.makeText(this, getResources().getString(R.string.deleted) + title, Toast.LENGTH_SHORT).show();
         refresh_Activity();
     }
 
@@ -207,10 +208,9 @@ public class CommunityMainActivity extends AppCompatActivity {
     }
 
     // load a new activity for add a new community
-    public void showCommunitysAdd(View view) {
-
-//        Intent showCommunitysAdd = new Intent(this, CommunitysEditActivity.class);
-//        startActivity(showCommunitysAdd);
+    public void showCommunityAdd(View view) {
+        Intent showCommunityAdd = new Intent(this, CommunityEditActivity.class);
+        startActivity(showCommunityAdd);
     }
 
 }

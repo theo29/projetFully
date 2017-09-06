@@ -41,4 +41,11 @@
     <string name="identifiant">Id</string>
     <string name="type_of_community">Type of community</string>
     <string name="idUser">Id user</string>
+    <string name="new_community">New community</string>
+    <string name="modify_community">Modify a community</string>
+    <string name="error">Error</string>
+    <string name="Community_control">Unable to add Community: please check your input</string>
+    <string name="new_gaeCommunity_added">You have added a new community</string>
+    <string name="update_gaeCommunity">You have updated a community</string>
+    <string name="deleted">Removed: </string>
 </resources>

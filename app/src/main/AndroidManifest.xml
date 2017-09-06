@@ -109,6 +109,17 @@
         </activity>
         <!-- CommunityPageActivity activities -->
         <activity
+            android:name=".CommunityEditActivity"
+            android:parentActivityName=".CommunityMainActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hesso.projetfully.MainActivity" />
+        </activity>
+
+        <!-- CommunityPageActivity activities -->
+        <activity
             android:name=".CommunityPageActivity"
             android:parentActivityName=".CommunityMainActivity">
 
@@ -140,7 +151,6 @@
                 android:value="com.hesso.projetfully.MainActivity" />
         </activity>
 
-
         <!-- SelectedCommunity activities -->
         <activity
             android:name=".SelectedCommunity"
@@ -149,6 +159,7 @@
         <activity android:name=".UserCallActivity" />
         <activity android:name=".CreateCallActivity" />
         <activity android:name=".AddLeaveCallsActivity" />
+
     </application>
 
 </manifest>

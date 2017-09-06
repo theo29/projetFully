@@ -32,6 +32,8 @@ public class PFG_Fulltopia {
     public static final int MENU_REMOVE = 2;
     public static final int QUERY_SELECT = 1;
     public static final int QUERY_REMOVE = 2;
+    public final static String EDIT_MODE_NEW = "EDIT_MODE_NEW";
+    public final static String MODIFY_COMMUNITY = "MODIFY_COMMUNITY";
 
     public static String getCurrentUserID(){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();

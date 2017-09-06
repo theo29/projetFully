@@ -12,6 +12,8 @@ import android.widget.TextView;
 import com.example.theop.myapplication.backend.gAECommunityApi.model.GAECommunity;
 import com.hesso.projetfully.bll.CommunityBLL;
 
+import static com.hesso.projetfully.bll.PFG_Fulltopia.MODIFY_COMMUNITY;
+
 public class CommunityPageActivity extends AppCompatActivity {
     static final String STATE_ID = "ID_COMMUNITY";
     private GAECommunity community;
@@ -116,11 +118,10 @@ public class CommunityPageActivity extends AppCompatActivity {
 
     //modify the selected community if longpress contextmenu
     public void modifyCommunity(View view) {
-        /*
+
         Intent intent = new Intent(this, CommunityEditActivity.class);
-        intent.putExtra(MODIFY_WRITER, community);
+        intent.putExtra(MODIFY_COMMUNITY, community.getId());
         startActivity(intent);
-        */
     }
 
 
