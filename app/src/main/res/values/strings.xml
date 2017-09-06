@@ -35,4 +35,10 @@
     <string name="community">Community</string>
     <string name="communities">Communities</string>
     <string name="types_of_community">Types of Community</string>
+    <string name="description">Description</string>
+    <string name="name">Name</string>
+    <string name="modify_button">Modify</string>
+    <string name="identifiant">Id</string>
+    <string name="type_of_community">Type of community</string>
+    <string name="idUser">Id user</string>
 </resources>

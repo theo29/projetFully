@@ -17,24 +17,37 @@ import java.util.List;
 public class EndpointsAsyncTaskCommunity extends AsyncTask<Void, Void, List<GAECommunity>> {
     private static final String TAG = EndpointsAsyncTaskCommunity.class.getName();
     private static GAECommunityApi gaeCommunityApi = null;
+
     private GAECommunity gaeCommunity = null;
-    private List<GAECommunity> gaeCommunitys = null;
+    private List<GAECommunity> gaeCommunities = null;
+    private int queryAction;
+    private long community_id;
 
     public EndpointsAsyncTaskCommunity() {
+        this.queryAction = 0;
+        this.community_id = 0;
     }
 
     public EndpointsAsyncTaskCommunity(GAECommunity gaeCommunity) {
         this.gaeCommunity = gaeCommunity;
+        this.queryAction = 0;
+        this.community_id = 0;
     }
 
-    public EndpointsAsyncTaskCommunity(List<GAECommunity> gaeCommunitys) {
-        this.gaeCommunitys = gaeCommunitys;
+    public EndpointsAsyncTaskCommunity(List<GAECommunity> gaeCommunities) {
+        this.gaeCommunities = gaeCommunities;
+        this.queryAction = 0;
+        this.community_id = 0;
+    }
+
+    public EndpointsAsyncTaskCommunity(int queryAction, long community_id) {
+        this.queryAction = queryAction;
+        this.community_id = community_id;
     }
 
 
     @Override
     protected List<GAECommunity> doInBackground(Void... params) {
-
         if (gaeCommunityApi == null) {
             // Only do this once
             GAECommunityApi.Builder builder = new GAECommunityApi.Builder(AndroidHttp.newCompatibleTransport(),
@@ -56,35 +69,48 @@ public class EndpointsAsyncTaskCommunity extends AsyncTask<Void, Void, List<GAEC
 
         try {
             // Call here the wished methods on the Endpoints
-            // For instance insert
-            if (gaeCommunitys != null) {
-                // delete all already existant users
-                List<GAECommunity> lstCommunity = gaeCommunityApi.list().execute().getItems();
-                if (lstCommunity != null) {
-                    for (GAECommunity gae : lstCommunity) {
-                        gaeCommunityApi.remove(gae.getId()).execute();
-                        Log.i(TAG, "deleted gaeuser " + gae.getId());
+            switch (queryAction) {
+                case PFG_Fulltopia.QUERY_SELECT:
+                    gaeCommunity = gaeCommunityApi.get(community_id).execute();
+                    gaeCommunities = new ArrayList<GAECommunity>();
+                    gaeCommunities.add(gaeCommunity);
+                    return gaeCommunities;
+//                    break;
+                case PFG_Fulltopia.QUERY_REMOVE:
+                    gaeCommunityApi.remove(community_id).execute();
+                    Log.i(TAG, "deleted gaeCommunity " + community_id);
+                    break;
+                default:
+                    // For instance insert
+                    if (gaeCommunities != null) {
+                        // delete all already existant users
+                        List<GAECommunity> lstCommunity = gaeCommunityApi.list().execute().getItems();
+                        if (lstCommunity != null) {
+                            for (GAECommunity gae : lstCommunity) {
+                                gaeCommunityApi.remove(gae.getId()).execute();
+                                Log.i(TAG, "deleted gaeCommunity " + gae.getId());
+                            }
+                        }
+                        // add all new users
+                        for (GAECommunity gae : gaeCommunities) {
+                            gaeCommunityApi.insert(gae).execute();
+                            Log.i(TAG, "insert gaeuser " + gae.getId());
+                        }
+                    } else if (gaeCommunity != null) {
+                        gaeCommunityApi.insert(gaeCommunity).execute();
+                        Log.i(TAG, "insert gaeuser " + gaeCommunity.getId());
                     }
-                }
-                // add all new users
-                for (GAECommunity gae : gaeCommunitys) {
-                    gaeCommunityApi.insert(gae).execute();
-                    Log.i(TAG, "insert gaeuser " + gae.getId());
-                }
-            } else if (gaeCommunity != null) {
-                gaeCommunityApi.insert(gaeCommunity).execute();
-                Log.i(TAG, "insert gaeuser " + gaeCommunity.getId());
+                    // and for instance return the list of all items
+                    //       return gaeCommunityApi.list().execute().getItems();
+                    List<GAECommunity> lstCommunity = gaeCommunityApi.list().execute().getItems();
+                    return lstCommunity;
             }
-
-            // and for instance return the list of all items
-            //       return gaeCommunityApi.list().execute().getItems();
-            List<GAECommunity> lstCommunity = gaeCommunityApi.list().execute().getItems();
-            return lstCommunity;
 
         } catch (IOException e) {
             Log.e(TAG, e.toString());
             return new ArrayList<GAECommunity>();
         }
+        return new ArrayList<GAECommunity>();
     }
 
     //This method gets executed on the UI thread - The UI can be manipulated directly inside

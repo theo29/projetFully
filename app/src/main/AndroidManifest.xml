@@ -39,6 +39,7 @@
             android:value="@string/default_notification_channel_id" />
         <!-- [END fcm_default_channel] -->
 
+
         <!--
                    The API key for Google Maps-based APIs is defined as a string resource.
                    (See the file "res/values/google_maps_api.xml").
@@ -69,6 +70,7 @@
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -77,6 +79,7 @@
         <activity
             android:name=".MainActivity"
             android:parentActivityName=".MainActivity">
+
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -87,6 +90,7 @@
         <activity
             android:name=".CommunityTypesMainActivity"
             android:parentActivityName=".MainActivity">
+
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -97,6 +101,17 @@
         <activity
             android:name=".CommunityMainActivity"
             android:parentActivityName=".MainActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hesso.projetfully.MainActivity" />
+        </activity>
+        <!-- CommunityPageActivity activities -->
+        <activity
+            android:name=".CommunityPageActivity"
+            android:parentActivityName=".CommunityMainActivity">
+
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -107,6 +122,7 @@
         <activity
             android:name=".NotificationActivity"
             android:parentActivityName=".MainActivity">
+
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -117,11 +133,13 @@
         <activity
             android:name=".SettingsActivity"
             android:parentActivityName=".MainActivity">
+
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.hesso.projetfully.MainActivity" />
         </activity>
+
 
         <!-- SelectedCommunity activities -->
         <activity
@@ -130,9 +148,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".UserCallActivity" />
         <activity android:name=".CreateCallActivity" />
-
-
-        <activity android:name=".AddLeaveCallsActivity"></activity>
+        <activity android:name=".AddLeaveCallsActivity" />
     </application>
 
 </manifest>

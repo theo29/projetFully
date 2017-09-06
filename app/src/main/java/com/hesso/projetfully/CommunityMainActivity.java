@@ -19,7 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.theop.myapplication.backend.gAECommunityApi.model.GAECommunity;
-import com.hesso.projetfully.bll.PFG_Fulltopia;
+import com.hesso.projetfully.bll.CommunityBLL;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,10 +43,10 @@ public class CommunityMainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Source de données
-        communities = PFG_Fulltopia.getAll_Community();
+        communities = CommunityBLL.getAll_Community();
 
-// intent pour detail
-//        intentCommunity = new Intent(this, CommunitysPageActivity.class);
+        // intent pour detail
+        intentCommunity = new Intent(this, CommunityPageActivity.class);
 
         ArrayAdapter<GAECommunity> adapter = new ArrayAdapter<GAECommunity>(this, R.layout.listview_community_layout, communities) {
             // Call for every entry in the ArrayAdapter
@@ -90,8 +90,8 @@ public class CommunityMainActivity extends AppCompatActivity {
 
             public boolean onItemLongClick(AdapterView<?> arg0, View v,
                                            int position, long id) {
-                Toast.makeText(CommunityMainActivity.this, "You have selected: " + communities.get(position).getName(), Toast.LENGTH_LONG).show();
-//                registerForContextMenu(list);
+//                Toast.makeText(CommunityMainActivity.this, "You have selected: " + communities.get(position).getName(), Toast.LENGTH_LONG).show();
+                registerForContextMenu(list);
                 return false;
             }
         });
@@ -100,9 +100,10 @@ public class CommunityMainActivity extends AppCompatActivity {
 
     //start CommunityPageActivit of choosed community
     private void startActivity_CommunitySelected(int position) {
-        Toast.makeText(this, "You have selected: " + communities.get(position).getName(), Toast.LENGTH_LONG).show();
-//        intentCommunity.putExtra(EXTRA_COMMUNITYTYPE_ID, communitys.get(position).getId());
-//        startActivity(intentCommunity);
+//        Toast.makeText(this, "You have selected: " + communities.get(position).getId() + " " + communities.get(position).getName(), Toast.LENGTH_LONG).show();
+        intentCommunity.putExtra(EXTRA_COMMUNITY_ID, communities.get(position).getId());
+        CommunityBLL.currentCommunity_id = communities.get(position).getId();
+        startActivity(intentCommunity);
     }
 
     //start CommunityEditActivit of choosed community into the ContextMenu

@@ -30,7 +30,9 @@ public class PFG_Fulltopia {
 
     public static final int MENU_SELECT = 1;
     public static final int MENU_REMOVE = 2;
-//    public final static String MODIFY_LOAN = "MODIFY_LOAN";
+    public static final int QUERY_SELECT = 1;
+    public static final int QUERY_REMOVE = 2;
+
     public static String getCurrentUserID(){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = "";
@@ -63,22 +65,6 @@ public class PFG_Fulltopia {
         return gaeCommunityTypes;
     }
 
-    public static List<GAECommunity> getAll_Community() {
-        List<GAECommunity> gaeCommunities = new ArrayList<GAECommunity>();
-
-        try {
-            gaeCommunities = new EndpointsAsyncTaskCommunity().execute().get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-        if (gaeCommunities == null) {
-            gaeCommunities = new ArrayList<GAECommunity>();
-        }
-
-        return gaeCommunities;
-    }
 
     public static List<GAECall> getCallUser() {
         List<GAECall> gaeCalls = new ArrayList<GAECall>();
