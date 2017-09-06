@@ -34,7 +34,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="btnClickCommunityType"
-        android:text="Types of Community"
+        android:text="@string/types_of_community"
+        tools:layout_editor_absoluteX="102dp"
+        tools:layout_editor_absoluteY="76dp" />
+
+    <Button
+        android:id="@+id/Community"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="btnClickCommunity"
+        android:text="@string/communities"
         tools:layout_editor_absoluteX="102dp"
         tools:layout_editor_absoluteY="76dp" />
 

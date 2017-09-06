@@ -38,65 +38,6 @@
             android:name="com.google.firebase.messaging.default_notification_channel"
             android:value="@string/default_notification_channel_id" />
         <!-- [END fcm_default_channel] -->
-        <activity android:name=".LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <!-- MainActivity activities -->
-        <activity
-            android:name=".MainActivity"
-            android:parentActivityName=".MainActivity">
-
-            <!-- Parent activity meta-data to support 4.0 and lower -->
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.hesso.projetfully.MainActivity" />
-        </activity>
-
-        <!-- CommunityTypesMainActivity activities -->
-        <activity
-            android:name=".CommunityTypesMainActivity"
-            android:parentActivityName=".MainActivity">
-
-            <!-- Parent activity meta-data to support 4.0 and lower -->
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.hesso.projetfully.MainActivity" />
-        </activity>
-
-        <!-- NotificationActivity activities -->
-        <activity
-            android:name=".NotificationActivity"
-            android:parentActivityName=".MainActivity">
-
-            <!-- Parent activity meta-data to support 4.0 and lower -->
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.hesso.projetfully.MainActivity" />
-        </activity>
-
-        <!-- Settings activities -->
-        <activity
-            android:name=".SettingsActivity"
-            android:parentActivityName=".MainActivity">
-
-            <!-- Parent activity meta-data to support 4.0 and lower -->
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.hesso.projetfully.MainActivity" />
-        </activity>
-
-        <!-- SelectedCommunity activities -->
-        <activity
-            android:name=".SelectedCommunity"
-            android:label="@string/title_activity_selected_community"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".UserCallActivity" />
-        <activity android:name=".CreateCallActivity" />
 
         <!--
                    The API key for Google Maps-based APIs is defined as a string resource.
@@ -123,6 +64,73 @@
                 <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
             </intent-filter>
         </service>
+
+        <!-- LoginActivity activities -->
+        <activity android:name=".LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- MainActivity activities -->
+        <activity
+            android:name=".MainActivity"
+            android:parentActivityName=".MainActivity">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hesso.projetfully.MainActivity" />
+        </activity>
+
+        <!-- CommunityTypesMainActivity activities -->
+        <activity
+            android:name=".CommunityTypesMainActivity"
+            android:parentActivityName=".MainActivity">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hesso.projetfully.MainActivity" />
+        </activity>
+
+        <!-- CommunitiesMainActivity activities -->
+        <activity
+            android:name=".CommunityMainActivity"
+            android:parentActivityName=".MainActivity">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hesso.projetfully.MainActivity" />
+        </activity>
+
+        <!-- NotificationActivity activities -->
+        <activity
+            android:name=".NotificationActivity"
+            android:parentActivityName=".MainActivity">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hesso.projetfully.MainActivity" />
+        </activity>
+
+        <!-- Settings activities -->
+        <activity
+            android:name=".SettingsActivity"
+            android:parentActivityName=".MainActivity">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hesso.projetfully.MainActivity" />
+        </activity>
+
+        <!-- SelectedCommunity activities -->
+        <activity
+            android:name=".SelectedCommunity"
+            android:label="@string/title_activity_selected_community"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".UserCallActivity" />
+        <activity android:name=".CreateCallActivity" />
+
 
         <activity android:name=".AddLeaveCallsActivity"></activity>
     </application>

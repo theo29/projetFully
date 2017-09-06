@@ -63,6 +63,23 @@ public class PFG_Fulltopia {
         return gaeCommunityTypes;
     }
 
+    public static List<GAECommunity> getAll_Community() {
+        List<GAECommunity> gaeCommunities = new ArrayList<GAECommunity>();
+
+        try {
+            gaeCommunities = new EndpointsAsyncTaskCommunity().execute().get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        if (gaeCommunities == null) {
+            gaeCommunities = new ArrayList<GAECommunity>();
+        }
+
+        return gaeCommunities;
+    }
+
     public static List<GAECall> getCallUser() {
         List<GAECall> gaeCalls = new ArrayList<GAECall>();
 

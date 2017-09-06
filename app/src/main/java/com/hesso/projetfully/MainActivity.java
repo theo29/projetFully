@@ -11,8 +11,6 @@ import android.widget.Toast;
 
 import com.hesso.projetfully.bll.PFG_Fulltopia;
 
-import junit.framework.Test;
-
 //last test
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -22,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_main);
         setContentView(R.layout.activity_main);
 
         myCallsButton = (Button) findViewById(R.id.myCallsButton);
@@ -43,8 +40,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-     public void btnClickCommunityType(View view) {
+    public void btnClickCommunityType(View view) {
         Intent intent = new Intent(MainActivity.this, CommunityTypesMainActivity.class);
+        startActivity(intent);
+    }
+
+    public void btnClickCommunity(View view) {
+        Intent intent = new Intent(MainActivity.this, CommunityMainActivity.class);
         startActivity(intent);
     }
 

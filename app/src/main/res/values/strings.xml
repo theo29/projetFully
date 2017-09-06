@@ -32,4 +32,7 @@
         It should describe the category of notifications that will be sent through this channel
      -->
     <string name="default_notification_channel_name" translatable="true">News</string>
+    <string name="community">Community</string>
+    <string name="communities">Communities</string>
+    <string name="types_of_community">Types of Community</string>
 </resources>
