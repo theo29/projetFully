@@ -41,7 +41,7 @@ public class MemberBLL {
         return gaeMembers;
     }
 
-    // list of Member's object for a community
+    // list of Member's object for a user
     public static List<GAEMember> getAll_MembersOfUser(String user_id) {
         List<GAEMember> gaeMembers = new ArrayList<GAEMember>();
         List<GAEMember> allMembers = getAll_Members();

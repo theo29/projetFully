@@ -3,10 +3,6 @@ package com.example.TheoP.myapplication.backend;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
@@ -17,6 +13,7 @@ public class GAECall {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String idMemberCreator;
+    private Long communityId;
     private String description;
     private String dateend;
     private String lieu;
@@ -25,8 +22,9 @@ public class GAECall {
 
     }
 
-    public GAECall(String idMemberCreator, String description, String dateend, String lieu) {
+    public GAECall(String idMemberCreator, Long communityId, String description, String dateend, String lieu) {
         this.idMemberCreator = idMemberCreator;
+        this.communityId = communityId;
         this.description = description;
         this.dateend = dateend;
         this.lieu = lieu;
@@ -48,6 +46,15 @@ public class GAECall {
     public void setidMemberCreator(String idMemberCreator) {
         this.idMemberCreator = idMemberCreator;
     }
+
+    public Long getCommunityId() {
+        return communityId;
+    }
+
+    public void setCommunityId(Long communityId) {
+        this.communityId = communityId;
+    }
+
 
     public String getDescription() {
         return description;
