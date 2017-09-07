@@ -48,13 +48,11 @@
         tools:layout_editor_absoluteY="76dp" />
 
     <Button
-            android:id="@+id/TestTheo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TestTheo"
-            tools:layout_editor_absoluteX="102dp"
-            tools:layout_editor_absoluteY="136dp" />
-
+        android:id="@+id/btnNotif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickBackToSelectActionFromLogin"
+        android:text="GoToNotif" />
 
     </LinearLayout>
 
