@@ -19,18 +19,35 @@
         android:layout_height="wrap_content" />
 
     <EditText
-        android:id="@+id/message"
+        android:id="@+id/lieu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/subject"
+        android:layout_below="@+id/date"
         android:layout_marginTop="16dp"
         android:background="#f8eff8f3"
         android:gravity="top"
-        android:hint="Message"
-        android:padding="16dp" />
+        android:hint="Lieu"
+        android:padding="16dp"
+        />
+
+    <EditText
+        android:id="@+id/date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Date : DD:MM:YYYY"
+        android:inputType="date" />
+
+    <EditText
+        android:id="@+id/time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="time"
+        android:hint="Time : HH:MM"/>
 
     <Button
-        android:id="@+id/create"
+        android:id="@+id/btncreate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/message"
@@ -38,6 +55,8 @@
         android:layout_marginTop="16dp"
         android:padding="16dp"
         android:text="Create" />
+
+
 
 
 </LinearLayout>
