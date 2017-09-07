@@ -8,21 +8,41 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.theop.myapplication.backend.gAECommunityTypeApi.model.GAECommunityType;
+
+
+import com.example.theop.myapplication.backend.gAECallApi.model.GAECall;
+import com.example.theop.myapplication.backend.gAECommunityApi.model.GAECommunity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.hesso.projetfully.bll.CallBLL;
 import com.hesso.projetfully.bll.PFG_Fulltopia;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import static com.hesso.projetfully.bll.PFG_Fulltopia.EDIT_MODE_NEW;
+import static com.hesso.projetfully.bll.PFG_Fulltopia.MODIFY_COMMUNITY;
+
 public class CreateCallActivity extends AppCompatActivity {
-    private List<GAECommunityType> communitytypes = new ArrayList<GAECommunityType>();
-    private GAECommunityType communitytype;
-    private Intent intentCommunityType;
+    private List<GAECommunity> communitys = new ArrayList<GAECommunity>();
+    private GAECommunity community;
+    private FirebaseAuth firebaseAuth;
+    private Button btnCreate;
+    private long currentId;
+    private Intent intent;
+    private String currentEditMode;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +51,25 @@ public class CreateCallActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_create_call);
 
-        // Source de données
-        communitytypes = PFG_Fulltopia.getUser_Community();
+        // set default mode
+        currentEditMode = EDIT_MODE_NEW;
 
-        ArrayAdapter<GAECommunityType> adapter = new ArrayAdapter<GAECommunityType>(this, R.layout.listview_communitytypes_layout, communitytypes) {
+
+
+
+        //instanciate user
+        firebaseAuth = FirebaseAuth.getInstance();
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+
+
+        // Source de données
+        //communitys = PFG_Fulltopia.getUser_Community();
+
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        btnCreate = (Button) findViewById(R.id.btncreate);
+
+        ArrayAdapter<GAECommunity> adapter = new ArrayAdapter<GAECommunity>(this, R.layout.activity_create_call, communitys) {
             // Call for every entry in the ArrayAdapter
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
@@ -43,42 +78,71 @@ public class CreateCallActivity extends AppCompatActivity {
                 if (convertView == null) {
                     // Create the Layout
                     LayoutInflater inflater = getLayoutInflater();
-                    view = inflater.inflate(R.layout.listview_communitytypes_layout, parent, false);
+                    view = inflater.inflate(R.layout.listview_community_layout, parent, false);
                 } else {
                     view = convertView;
                 }
 
                 //Add Text to the layout
-                TextView textView1 = (TextView) view.findViewById(R.id.textView_communitytypes);
-                textView1.setText(communitytypes.get(position).getDescription());
+                TextView textView1 = (TextView) view.findViewById(R.id.textView_community);
+                textView1.setText(communitys.get(position).getName());
 
                 return view;
             }
         };
 
-        final Spinner spiner = (Spinner) findViewById(R.id.spinner);
-        spiner.setAdapter(adapter);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
+
 
         //ListeView handler
         //
-        /*
-        spiner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                //(position);
+            public void onClick(View view) {
+
+                EditText editText;
+
+                GAECall call = new GAECall();
+
+                editText = (EditText) findViewById(R.id.Description);
+                call.setDescription(editText.getText().toString());
+
+
+                editText = (EditText) findViewById(R.id.date) ;
+                call.setDateend(editText.getText().toString());
+
+
+                editText = (EditText) findViewById(R.id.lieu);
+                call.setLieu(editText.getText().toString());
+
+                call.setIdMemberCreator(firebaseAuth.getCurrentUser().getUid());
+
+                //CallBLL.editCall(call);
+                /*
+        * Add new gaeCommunity, if the current mode is EDIT_MODE_NEW*/
+               if (currentEditMode == EDIT_MODE_NEW) {
+                    // uId current User
+                    call.setId((long) 0);
+                    CallBLL.editCall(call);
+                    Toast.makeText(CreateCallActivity.this,"Added",Toast.LENGTH_LONG).show();
+//            Toast.makeText(this, gaeCommunity.getName()+"; idUser="+gaeCommunity.getIdUserAdmin()+"; id="+gaeCommunity.getId()+"; idCommunityType="+gaeCommunity.getIdCommunityType(), Toast.LENGTH_LONG).show();
+                } else {
+                    // show a toast for simulate
+                    if (CallBLL.editCall(call).getId() > 0)
+                        Toast.makeText(CreateCallActivity.this, "error", Toast.LENGTH_LONG).show();
+                }
+
+
+
+                /*Intent intent = new Intent(CreateCallActivity.this, UserCallActivity.class);
+                startActivity(intent);*/
+
             }
         });
 
-        //Configuration onLongPress pour modifier ou supprimer un communitytype.
-        spiner.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-
-            public boolean onItemLongClick(AdapterView<?> arg0, View v,
-                                           int position, long id) {
-                Toast.makeText(CreateCallActivity.this, "You have selected: " + communitytypes.get(position).getDescription(), Toast.LENGTH_LONG).show();
-//                registerForContextMenu(list);
-                return false;
-            }
-        });*/
     }
 }
