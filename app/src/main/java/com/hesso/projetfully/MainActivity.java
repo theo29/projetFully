@@ -3,6 +3,7 @@ package com.hesso.projetfully;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -68,5 +69,12 @@ public class MainActivity extends AppCompatActivity {
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .show();
 
+    }
+
+    //Théo
+    //OnCLick go to NotificationLayout
+    public void onClickBackToSelectActionFromLogin(View w){
+        Intent intent = new Intent(this,NotificationActivity.class);
+        startActivity(intent);
     }
 }

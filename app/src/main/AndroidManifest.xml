@@ -38,35 +38,6 @@
             android:name="com.google.firebase.messaging.default_notification_channel"
             android:value="@string/default_notification_channel_id" />
         <!-- [END fcm_default_channel] -->
-
-
-        <!--
-                   The API key for Google Maps-based APIs is defined as a string resource.
-                   (See the file "res/values/google_maps_api.xml").
-                   Note that the API key is linked to the encryption key used to sign the APK.
-                   You need a different API key for each encryption key, including the release key that is used to
-                   sign the APK for publishing.
-                   You can define the keys for the debug and release targets in src/debug/ and src/release/.
-        -->
-        <service android:name=".MyFirebaseMessagingService">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
-        <service android:name=".FirebaseIDService">
-            <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
-            </intent-filter>
-        </service>
-        <service
-            android:name=".MyJobService"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
-            </intent-filter>
-        </service>
-
-        <!-- LoginActivity activities -->
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -90,38 +61,6 @@
         <activity
             android:name=".CommunityTypesMainActivity"
             android:parentActivityName=".MainActivity">
-
-            <!-- Parent activity meta-data to support 4.0 and lower -->
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.hesso.projetfully.MainActivity" />
-        </activity>
-
-        <!-- CommunitiesMainActivity activities -->
-        <activity
-            android:name=".CommunityMainActivity"
-            android:parentActivityName=".MainActivity">
-
-            <!-- Parent activity meta-data to support 4.0 and lower -->
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.hesso.projetfully.MainActivity" />
-        </activity>
-        <!-- CommunityPageActivity activities -->
-        <activity
-            android:name=".CommunityEditActivity"
-            android:parentActivityName=".CommunityMainActivity">
-
-            <!-- Parent activity meta-data to support 4.0 and lower -->
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.hesso.projetfully.MainActivity" />
-        </activity>
-
-        <!-- CommunityPageActivity activities -->
-        <activity
-            android:name=".CommunityPageActivity"
-            android:parentActivityName=".CommunityMainActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
@@ -158,8 +97,34 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".UserCallActivity" />
         <activity android:name=".CreateCallActivity" />
-        <activity android:name=".AddLeaveCallsActivity" />
 
+        <!--
+                   The API key for Google Maps-based APIs is defined as a string resource.
+                   (See the file "res/values/google_maps_api.xml").
+                   Note that the API key is linked to the encryption key used to sign the APK.
+                   You need a different API key for each encryption key, including the release key that is used to
+                   sign the APK for publishing.
+                   You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <service android:name=".MyFirebaseMsgService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".FirebaseIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".MyJobService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".AddLeaveCallsActivity"></activity>
     </application>
 
 </manifest>
