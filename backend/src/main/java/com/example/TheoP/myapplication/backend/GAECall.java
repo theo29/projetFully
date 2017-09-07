@@ -16,20 +16,20 @@ public class GAECall {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long idMemberCreator;
+    private String idMemberCreator;
     private String description;
-    private Date dateend;
-    private String mapposition;
+    private String dateend;
+    private String lieu;
 
     public GAECall() {
 
     }
 
-    public GAECall(Long idMemberCreator, String description, Date dateend, String mapposition) {
+    public GAECall(String idMemberCreator, String description, String dateend, String lieu) {
         this.idMemberCreator = idMemberCreator;
         this.description = description;
         this.dateend = dateend;
-        this.mapposition = mapposition;
+        this.lieu = lieu;
     }
 
     @Override
@@ -41,11 +41,11 @@ public class GAECall {
         return id;
     }
 
-    public Long getidMemberCreator() {
+    public String getidMemberCreator() {
         return idMemberCreator;
     }
 
-    public void setidMemberCreator(Long idMemberCreator) {
+    public void setidMemberCreator(String idMemberCreator) {
         this.idMemberCreator = idMemberCreator;
     }
 
@@ -57,20 +57,20 @@ public class GAECall {
         this.description = description;
     }
 
-    public Date getDateend() {
+    public String getDateend() {
         return dateend;
     }
 
-    public void setDateend(Date dateend) {
+    public void setDateend(String dateend) {
         this.dateend = dateend;
     }
 
-    public String getMapposition() {
-        return mapposition;
+    public String getLieu() {
+        return lieu;
     }
 
-    public void setMapposition(String mapposition) {
-        this.mapposition = mapposition;
+    public void setLieu(String lieu) {
+        this.lieu = lieu;
     }
 
 }
