@@ -1,6 +1,7 @@
 package com.hesso.projetfully.bll;
 
 import com.example.theop.myapplication.backend.gAECommunityApi.model.GAECommunity;
+import com.example.theop.myapplication.backend.gAEMemberApi.model.GAEMember;
 import com.hesso.projetfully.GAE.EndpointsAsyncTaskCommunity;
 
 import java.util.ArrayList;
@@ -83,5 +84,19 @@ public class CommunityBLL {
         }
 
         return true;
+    }
+
+    public static boolean getIamAdmin(GAECommunity community) {
+        if (community == null) return false;
+        return community.getIdUserAdmin() == PFG_Fulltopia.getCurrentUserID();
+
+    }
+
+    public static boolean getIamMember(GAECommunity community) {
+        GAEMember gaeMember = MemberBLL.getMemberByUser_Community(PFG_Fulltopia.getCurrentUserID(), community.getId());
+        if (gaeMember == null) return false;
+        return gaeMember.getUserId() == PFG_Fulltopia.getCurrentUserID()
+                && gaeMember.getCommunityId() == community.getId();
+
     }
 }

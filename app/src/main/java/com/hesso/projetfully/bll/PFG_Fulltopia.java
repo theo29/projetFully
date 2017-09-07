@@ -169,8 +169,6 @@ public class PFG_Fulltopia {
     private static void test_Add_DATA_Community() {
         List<GAECommunity> gaeCommunities = new ArrayList<GAECommunity>();
 
-//        List<GAECommunityType> gaeCommunityTypes = new ArrayList<GAECommunityType>();
-//        gaeCommunityTypes = getAll_CommunityTypes();
         GAECommunityType gaeCommunityType = getAll_CommunityTypes().get(1);
 
         GAECommunity gaeCommunity;
