@@ -11,7 +11,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.hesso.projetfully.GAE.EndpointsAsyncTaskCall;
 import com.hesso.projetfully.GAE.EndpointsAsyncTaskCommunity;
 import com.hesso.projetfully.GAE.EndpointsAsyncTaskCommunityType;
-import com.hesso.projetfully.GAE.EndpointsAsyncTaskMember;
 import com.hesso.projetfully.GAE.EndpointsAsyncTaskUser;
 
 import java.util.ArrayList;
@@ -28,7 +27,7 @@ public class PFG_Fulltopia {
     // local
 //    public static final String _HTTPS_APP_ID_ = "http://10.0.2.2:8080/_ah/api/";
     // cloud
-    public static final String _HTTPS_APP_ID_ = "https://projetfully.appspot.com/_ah/api/";
+    public static final String _HTTPS_APP_ID_ = "https://2-dot-projetfully.appspot.com/_ah/api/";
 
     public static final int MENU_SELECT = 1;
     public static final int MENU_REMOVE = 2;
@@ -221,26 +220,27 @@ public class PFG_Fulltopia {
         for (GAEMember gaeMember : gaeMembers) {
             GAECall gaeCall;
             gaeCall = new GAECall();
-            gaeCall.setId((long) 0);
+//            gaeCall.setId((long) 0);
             gaeCall.setIdMemberCreator(gaeMember.getUserId());
             gaeCall.setCommunityId(gaeMember.getCommunityId());
             gaeCall.setDescription("It's my Call " + gaeMember.getUserId());
             gaeCall.setDateend("07.09.2017");
             gaeCall.setLieu("Sion");
+            gaeCalls.add(gaeCall);
         }
 
         new EndpointsAsyncTaskCall(gaeCalls).execute();
     }
 
     private static void test_Add_DATA_Member() {
-        List<GAEMember> gaeMembers = new ArrayList<GAEMember>();
+//        List<GAEMember> gaeMembers = new ArrayList<GAEMember>();
         List<GAECommunity> gaeCommunities = CommunityBLL.getAll_Community();
 
         // add in the gaeMembers
         CommunityBLL.joinCommunity(gaeCommunities.get(0));
         CommunityBLL.joinCommunity(gaeCommunities.get(1));
 
-        new EndpointsAsyncTaskMember(gaeMembers).execute();
+//        new EndpointsAsyncTaskMember(gaeMembers).execute();
 
     }
 

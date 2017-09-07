@@ -3,7 +3,6 @@ package com.hesso.projetfully;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -27,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         myCallsButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, UserCallActivity.class);
+                Intent intent = new Intent(MainActivity.this, CommunityMainActivity.class);
                 startActivity(intent);
             }
         });

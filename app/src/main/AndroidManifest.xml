@@ -156,7 +156,7 @@
             android:name=".SelectedCommunity"
             android:label="@string/title_activity_selected_community"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".UserCallActivity" />
+
         <activity android:name=".CreateCallActivity" />
 
     </application>
