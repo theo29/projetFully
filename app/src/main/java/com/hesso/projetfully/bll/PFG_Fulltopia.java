@@ -4,12 +4,14 @@ package com.hesso.projetfully.bll;
 import com.example.theop.myapplication.backend.gAECallApi.model.GAECall;
 import com.example.theop.myapplication.backend.gAECommunityApi.model.GAECommunity;
 import com.example.theop.myapplication.backend.gAECommunityTypeApi.model.GAECommunityType;
+import com.example.theop.myapplication.backend.gAEMemberApi.model.GAEMember;
 import com.example.theop.myapplication.backend.gAEUserApi.model.GAEUser;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.hesso.projetfully.GAE.EndpointsAsyncTaskCall;
 import com.hesso.projetfully.GAE.EndpointsAsyncTaskCommunity;
 import com.hesso.projetfully.GAE.EndpointsAsyncTaskCommunityType;
+import com.hesso.projetfully.GAE.EndpointsAsyncTaskMember;
 import com.hesso.projetfully.GAE.EndpointsAsyncTaskUser;
 
 import java.util.ArrayList;
@@ -46,9 +48,12 @@ public class PFG_Fulltopia {
         test_Add_DATA_Users();
         test_Add_DATA_CommunityTypes();
         test_Add_DATA_Community();
+        test_Add_DATA_Member();
+        test_Add_DATA_Call();
 //        getAll_CommunityTypes();
 
     }
+
 
     public static List<GAECommunityType> getAll_CommunityTypes() {
         List<GAECommunityType> gaeCommunityTypes = new ArrayList<GAECommunityType>();
@@ -208,6 +213,35 @@ public class PFG_Fulltopia {
         if (gaeCommunities.size() > 0) {
             new EndpointsAsyncTaskCommunity(gaeCommunities).execute();
         }
+    }
+
+    private static void test_Add_DATA_Call() {
+        List<GAECall> gaeCalls = new ArrayList<GAECall>();
+        List<GAEMember> gaeMembers = MemberBLL.getAll_Members();
+        for (GAEMember gaeMember : gaeMembers) {
+            GAECall gaeCall;
+            gaeCall = new GAECall();
+            gaeCall.setId((long) 0);
+            gaeCall.setIdMemberCreator(gaeMember.getUserId());
+            gaeCall.setCommunityId(gaeMember.getCommunityId());
+            gaeCall.setDescription("It's my Call " + gaeMember.getUserId());
+            gaeCall.setDateend("07.09.2017");
+            gaeCall.setLieu("Sion");
+        }
+
+        new EndpointsAsyncTaskCall(gaeCalls).execute();
+    }
+
+    private static void test_Add_DATA_Member() {
+        List<GAEMember> gaeMembers = new ArrayList<GAEMember>();
+        List<GAECommunity> gaeCommunities = CommunityBLL.getAll_Community();
+
+        // add in the gaeMembers
+        CommunityBLL.joinCommunity(gaeCommunities.get(0));
+        CommunityBLL.joinCommunity(gaeCommunities.get(1));
+
+        new EndpointsAsyncTaskMember(gaeMembers).execute();
+
     }
 
 }
