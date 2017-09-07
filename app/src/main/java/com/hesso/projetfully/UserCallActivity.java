@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.theop.myapplication.backend.gAECallApi.model.GAECall;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.hesso.projetfully.bll.PFG_Fulltopia;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,6 @@ public class UserCallActivity extends AppCompatActivity {
     private Intent intentCall;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +32,7 @@ public class UserCallActivity extends AppCompatActivity {
         // enable the app icon as the up buton
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //calls = PFG_Fulltopia.getCallUser();
+        calls = PFG_Fulltopia.getCallUser();
 
         //instanciate user
         firebaseAuth = FirebaseAuth.getInstance();
@@ -47,7 +47,7 @@ public class UserCallActivity extends AppCompatActivity {
                 if (convertView == null) {
                     // Create the Layout
                     LayoutInflater inflater = getLayoutInflater();
-                    view = inflater.inflate(R.layout.listview_communitytypes_layout, parent, false);
+                    view = inflater.inflate(R.layout.listview_community_layout, parent, false);
                 } else {
                     view = convertView;
                 }
