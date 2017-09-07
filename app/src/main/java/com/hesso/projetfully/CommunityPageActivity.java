@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -64,7 +65,15 @@ public class CommunityPageActivity extends AppCompatActivity {
 
         textView = (TextView) findViewById(R.id.descriptionLongC);
         textView.setText("" + community.getDescriptionLong());
+        setBoutonTextJoinLeave();
+    }
 
+    private void setBoutonTextJoinLeave() {
+        Button btnJoinLeave = (Button) findViewById(R.id.btnJoinLeaveCommunity);
+        if (CommunityBLL.getIamMember(community))
+            btnJoinLeave.setText(R.string.Leave);
+        else
+            btnJoinLeave.setText(R.string.joinUs);
     }
 
     @Override
@@ -134,5 +143,6 @@ public class CommunityPageActivity extends AppCompatActivity {
             Toast.makeText(this, "Joined " + community.getName(), Toast.LENGTH_LONG).show();
             CommunityBLL.joinCommunity(community);
         }
+        setBoutonTextJoinLeave();
     }
 }
