@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.theop.myapplication.backend.gAECommunityApi.model.GAECommunity;
 import com.hesso.projetfully.bll.CommunityBLL;
@@ -125,4 +126,13 @@ public class CommunityPageActivity extends AppCompatActivity {
     }
 
 
+    public void joinLeaveCommunity(View view) {
+        if (CommunityBLL.getIamMember(community)) {
+            Toast.makeText(this, "Leaved " + community.getName(), Toast.LENGTH_LONG).show();
+            CommunityBLL.leaveCommunity(community);
+        } else {
+            Toast.makeText(this, "Joined " + community.getName(), Toast.LENGTH_LONG).show();
+            CommunityBLL.joinCommunity(community);
+        }
+    }
 }

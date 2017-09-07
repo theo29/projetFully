@@ -95,8 +95,29 @@ public class CommunityBLL {
     public static boolean getIamMember(GAECommunity community) {
         GAEMember gaeMember = MemberBLL.getMemberByUser_Community(PFG_Fulltopia.getCurrentUserID(), community.getId());
         if (gaeMember == null) return false;
-        return gaeMember.getUserId() == PFG_Fulltopia.getCurrentUserID()
-                && gaeMember.getCommunityId() == community.getId();
+        if (gaeMember.isEmpty()) return false;
+        return (gaeMember.getUserId().equals(PFG_Fulltopia.getCurrentUserID())
+                && gaeMember.getCommunityId().equals(community.getId()));
 
+    }
+
+    public static boolean joinCommunity(GAECommunity community) {
+        if (community == null) return false;
+        if (getIamMember(community)) return true;   // already member
+        GAEMember gaeMember = new GAEMember();
+        gaeMember.setId((long) 0);
+        gaeMember.setUserId(PFG_Fulltopia.getCurrentUserID());
+        gaeMember.setCommunityId(community.getId());
+        MemberBLL.editMember(gaeMember);
+        return true;
+    }
+
+    public static boolean leaveCommunity(GAECommunity community) {
+        if (community == null) return true;
+        if (!getIamMember(community)) return true;   // never member
+        GAEMember gaeMember = MemberBLL.getMemberByUser_Community(PFG_Fulltopia.getCurrentUserID(), community.getId());
+        if (gaeMember == null) return true;
+        MemberBLL.remove(gaeMember.getId());
+        return true;
     }
 }

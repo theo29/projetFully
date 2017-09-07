@@ -46,7 +46,7 @@ public class MemberBLL {
         List<GAEMember> gaeMembers = new ArrayList<GAEMember>();
         List<GAEMember> allMembers = getAll_Members();
         for (GAEMember gaeM : allMembers) {
-            if (gaeM.getUserId() == user_id) {
+            if (gaeM.getUserId().equals(user_id)) {
                 gaeMembers.add(gaeM);
             }
         }
@@ -75,7 +75,7 @@ public class MemberBLL {
         List<GAEMember> gaeMembers = getAll_Members();
         if (gaeMembers != null) {
             for (GAEMember gaeM : gaeMembers) {
-                if (gaeM.getUserId() == user_id && gaeM.getCommunityId() == community_id) {
+                if (gaeM.getUserId().equals(user_id) && gaeM.getCommunityId().equals(community_id)) {
                     return gaeM;
                 }
             }

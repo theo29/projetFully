@@ -57,8 +57,19 @@
                     android:onClick="modifyCommunity"
                     android:text="@string/modify_button" />
 
+
             </RelativeLayout>
 
+            <Button
+                android:id="@+id/btnJoinLeaveCommunity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:onClick="joinLeaveCommunity"
+                android:text="@string/joinUs" />
 
             <TextView
                 android:id="@+id/id_lbl"

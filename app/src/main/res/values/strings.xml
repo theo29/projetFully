@@ -48,4 +48,5 @@
     <string name="new_gaeCommunity_added">You have added a new community</string>
     <string name="update_gaeCommunity">You have updated a community</string>
     <string name="deleted">Removed: </string>
+    <string name="joinUs">Join us</string>
 </resources>
