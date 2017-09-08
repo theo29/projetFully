@@ -7,23 +7,28 @@
 
 
     <Button
+        android:id="@+id/TestGius"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickTestGius"
+        android:text="Reset Data"
+        tools:layout_editor_absoluteX="102dp"
+        tools:layout_editor_absoluteY="76dp" />
+
+    <Button
+        android:id="@+id/btnNotif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickBackToSelectActionFromLogin"
+        android:text="GoToNotif" />
+
+    <Button
         android:id="@+id/myCallsButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="My calls"
         tools:layout_editor_absoluteX="102dp"
         tools:layout_editor_absoluteY="16dp" />
-
-
-
-    <Button
-        android:id="@+id/TestGius"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onClickTestGius"
-        android:text="TestGius"
-        tools:layout_editor_absoluteX="102dp"
-        tools:layout_editor_absoluteY="76dp" />
 
     <Button
         android:id="@+id/CommunityType"
@@ -42,12 +47,5 @@
         android:text="@string/communities"
         tools:layout_editor_absoluteX="102dp"
         tools:layout_editor_absoluteY="76dp" />
-
-    <Button
-        android:id="@+id/btnNotif"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onClickBackToSelectActionFromLogin"
-        android:text="GoToNotif" />
 
 </LinearLayout>
