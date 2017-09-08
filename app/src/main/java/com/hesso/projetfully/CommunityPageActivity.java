@@ -54,18 +54,14 @@ public class CommunityPageActivity extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.nameW_lbl);
         textView.setText(community.getName());
 
-        textView = (TextView) findViewById(R.id.idCommunity);
-        textView.setText("" + community.getId());
-
         textView = (TextView) findViewById(R.id.communityType);
-        textView.setText("" + community.getIdCommunityType());
+        textView.setText(""+CommunityBLL.getCommunityType(community.getIdCommunityType()));
 
-        textView = (TextView) findViewById(R.id.idUserAdmin);
-        textView.setText("" + community.getIdUserAdmin());
 
         textView = (TextView) findViewById(R.id.descriptionLongC);
-        textView.setText("" + community.getDescriptionLong());
+        textView.setText("" + community.getName());
         setBoutonTextJoinLeave();
+        setButonAddCall();
     }
 
     private void setBoutonTextJoinLeave() {
@@ -74,6 +70,14 @@ public class CommunityPageActivity extends AppCompatActivity {
             btnJoinLeave.setText(R.string.Leave);
         else
             btnJoinLeave.setText(R.string.joinUs);
+    }
+
+    private void setButonAddCall(){
+        Button btnAddCall = (Button) findViewById(R.id.btnShowCall);
+        if(CommunityBLL.getIamMember(community))
+            btnAddCall.setVisibility(View.VISIBLE);
+        else
+            btnAddCall.setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -139,10 +143,23 @@ public class CommunityPageActivity extends AppCompatActivity {
         if (CommunityBLL.getIamMember(community)) {
             Toast.makeText(this, "Leaved " + community.getName(), Toast.LENGTH_LONG).show();
             CommunityBLL.leaveCommunity(community);
+            setButonAddCall();
         } else {
             Toast.makeText(this, "Joined " + community.getName(), Toast.LENGTH_LONG).show();
             CommunityBLL.joinCommunity(community);
+            setButonAddCall();
         }
         setBoutonTextJoinLeave();
     }
+
+    public void showCalls(View view){
+        Intent intent = new Intent(CommunityPageActivity.this, CallMainActivity.class);
+        intent.putExtra(MODIFY_COMMUNITY, community.getId());
+        CommunityBLL.currentCommunity_id = community.getId();
+        startActivity(intent);
+
+
+    }
+
+
 }

@@ -60,12 +60,6 @@ public class CreateCallActivity extends AppCompatActivity {
         //instanciate user
         firebaseAuth = FirebaseAuth.getInstance();
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-
-
-        // Source de données
-        //communitys = PFG_Fulltopia.getUser_Community();
-
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         btnCreate = (Button) findViewById(R.id.btncreate);
 
@@ -95,6 +89,12 @@ public class CreateCallActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
+
+
+        // Source de données
+        //communitys = PFG_Fulltopia.getUser_Community();
+
+
 
 
         //ListeView handler

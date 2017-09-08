@@ -60,6 +60,9 @@
 
             </RelativeLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
             <Button
                 android:id="@+id/btnJoinLeaveCommunity"
                 android:layout_width="wrap_content"
@@ -71,25 +74,22 @@
                 android:onClick="joinLeaveCommunity"
                 android:text="@string/joinUs" />
 
-            <TextView
-                android:id="@+id/id_lbl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:text="@string/identifiant"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                <Button
+                    android:id="@+id/btnShowCall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:onClick="showCalls"
+                    android:text="show calls" />
 
-            <TextView
-                android:id="@+id/idCommunity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:inputType="date"
-                android:text="@string/identifiant"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            </LinearLayout>
+
+
+
+
 
             <TextView
                 android:id="@+id/communityType_lbl"
@@ -110,24 +110,6 @@
                 android:text="@string/type_of_community"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-            <TextView
-                android:id="@+id/idUserAdmin_lbl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:text="@string/idUser"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-            <TextView
-                android:id="@+id/idUserAdmin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:text="@string/idUser"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <TextView
                 android:id="@+id/descriptionLong_lbl"
