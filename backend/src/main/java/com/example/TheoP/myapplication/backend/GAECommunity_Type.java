@@ -3,9 +3,6 @@ package com.example.TheoP.myapplication.backend;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
@@ -32,7 +29,7 @@ public class GAECommunity_Type {
 
     @Override
     public String toString() {
-        return description;
+        return getDescription();
     }
 
     public Long getId() {
