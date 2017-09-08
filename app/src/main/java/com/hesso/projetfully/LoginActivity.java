@@ -148,7 +148,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 String uid = user.getUid();
                                 //Toast.makeText(LoginActivity.this,email,Toast.LENGTH_LONG).show();
 
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, CommunityMainActivity.class);
                                 startActivity(intent);
                             }
                         }

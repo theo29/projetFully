@@ -182,32 +182,32 @@ public class PFG_Fulltopia {
 
         // add in the gaeCommunities
         gaeCommunity = new GAECommunity();
-        gaeCommunity.setName("Ma communeauté de "+gaeCommunityType.getDescription());
-        gaeCommunity.setDescriptionLong("ma description longue "+"; id:"+gaeCommunityType.getId());
+        gaeCommunity.setName("Pétanqueurs du dimanche");
+        gaeCommunity.setDescriptionLong("Ici c'est pour les pros de la pétanque !");
         gaeCommunity.setIdUserAdmin(PFG_Fulltopia.getCurrentUserID());
         gaeCommunity.setIdCommunityType(gaeCommunityType.getId());
         gaeCommunities.add(gaeCommunity);
 
         // add in the gaeCommunities
         gaeCommunity = new GAECommunity();
-        gaeCommunity.setName("Ma 2ème communeauté de "+gaeCommunityType.getDescription());
-        gaeCommunity.setDescriptionLong("ma description longue "+"; id:"+gaeCommunityType.getId());
+        gaeCommunity.setName("Toujours la fête");
+        gaeCommunity.setDescriptionLong("Venez faire la fête tous les jours");
         gaeCommunity.setIdUserAdmin(PFG_Fulltopia.getCurrentUserID());
         gaeCommunity.setIdCommunityType(gaeCommunityType.getId());
         gaeCommunities.add(gaeCommunity);
 
         // add in the gaeCommunities
         gaeCommunity = new GAECommunity();
-        gaeCommunity.setName("Voilà "+gaeCommunityType.getDescription());
-        gaeCommunity.setDescriptionLong("ma description longue "+"; id:"+gaeCommunityType.getId());
+        gaeCommunity.setName("Player unknow's Battelground Valais");
+        gaeCommunity.setDescriptionLong("Tous les valaisans, tous à PUBG!");
         gaeCommunity.setIdUserAdmin(PFG_Fulltopia.getCurrentUserID());
         gaeCommunity.setIdCommunityType(gaeCommunityType.getId());
         gaeCommunities.add(gaeCommunity);
 
         // add in the gaeCommunities
         gaeCommunity = new GAECommunity();
-        gaeCommunity.setName("Communeauté pour "+gaeCommunityType.getDescription());
-        gaeCommunity.setDescriptionLong("ma description longue "+"; id:"+gaeCommunityType.getId());
+        gaeCommunity.setName("Expositions d'art à Sion");
+        gaeCommunity.setDescriptionLong("Venez voir des galeries d'arts à Sion !");
         gaeCommunity.setIdUserAdmin(PFG_Fulltopia.getCurrentUserID());
         gaeCommunity.setIdCommunityType(gaeCommunityType.getId());
         gaeCommunities.add(gaeCommunity);
@@ -226,8 +226,8 @@ public class PFG_Fulltopia {
 //            gaeCall.setId((long) 0);
             gaeCall.setIdMemberCreator(gaeMember.getUserId());
             gaeCall.setCommunityId(gaeMember.getCommunityId());
-            gaeCall.setDescription("It's my Call " + gaeMember.getUserId());
-            gaeCall.setDateend("07.09.2017");
+            gaeCall.setDescription("Pétanque ce soir au bistro");
+            gaeCall.setDateend("10.09.2017");
             gaeCall.setLieu("Sion");
             gaeCalls.add(gaeCall);
         }

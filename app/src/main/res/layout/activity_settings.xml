@@ -5,4 +5,49 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
+    <Button
+        android:id="@+id/myCallsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="My calls"
+        tools:layout_editor_absoluteX="102dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+
+
+    <Button
+        android:id="@+id/TestGius"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickTestGius"
+        android:text="TestGius"
+        tools:layout_editor_absoluteX="102dp"
+        tools:layout_editor_absoluteY="76dp" />
+
+    <Button
+        android:id="@+id/CommunityType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="btnClickCommunityType"
+        android:text="@string/types_of_community"
+        tools:layout_editor_absoluteX="102dp"
+        tools:layout_editor_absoluteY="76dp" />
+
+    <Button
+        android:id="@+id/Community"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="btnClickCommunity"
+        android:text="@string/communities"
+        tools:layout_editor_absoluteX="102dp"
+        tools:layout_editor_absoluteY="76dp" />
+
+    <Button
+        android:id="@+id/btnNotif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickBackToSelectActionFromLogin"
+        android:text="GoToNotif" />
+
 </LinearLayout>

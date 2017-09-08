@@ -62,7 +62,7 @@ public class CommunityPageActivity extends AppCompatActivity {
         textView.setText("" + community.getDescriptionLong());
         setBoutonTextJoinLeave();
         setButonAddCall();
-       // setButonModify();
+        setButonModify();
     }
 
     private void setBoutonTextJoinLeave() {
@@ -81,7 +81,7 @@ public class CommunityPageActivity extends AppCompatActivity {
             btnAddCall.setVisibility(View.INVISIBLE);
     }
 
-    /*
+
     public void setButonModify(){
         Button btnModify = (Button) findViewById(R.id.writer_modify_button);
         if(CommunityBLL.getIamAdmin(community))
@@ -89,7 +89,7 @@ public class CommunityPageActivity extends AppCompatActivity {
         else
             btnModify.setVisibility(View.INVISIBLE);
     }
-*/
+
 
     @Override
     protected void onSaveInstanceState(Bundle savedInstanceState) {
@@ -161,6 +161,7 @@ public class CommunityPageActivity extends AppCompatActivity {
             setButonAddCall();
         }
         setBoutonTextJoinLeave();
+        setButonModify();
     }
 
     public void showCalls(View view){
