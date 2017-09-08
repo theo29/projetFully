@@ -46,6 +46,28 @@
         android:layout_weight="1"
         android:orientation="vertical">
 
+        <RadioGroup
+            android:id="@+id/radioGroupCommunity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rgCommunityAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/all"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+            <RadioButton
+                android:id="@+id/rgCommunityJoined"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/joined"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+        </RadioGroup>
+
+
         <ListView
             android:id="@+id/main_listview"
             android:layout_width="match_parent"

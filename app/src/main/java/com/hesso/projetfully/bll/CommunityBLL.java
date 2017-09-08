@@ -1,15 +1,12 @@
 package com.hesso.projetfully.bll;
 
 import com.example.theop.myapplication.backend.gAECommunityApi.model.GAECommunity;
-import com.example.theop.myapplication.backend.gAECommunityTypeApi.model.GAECommunityType;
 import com.example.theop.myapplication.backend.gAEMemberApi.model.GAEMember;
 import com.hesso.projetfully.GAE.EndpointsAsyncTaskCommunity;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-
-import static com.hesso.projetfully.bll.PFG_Fulltopia.getAll_CommunityTypes;
 
 public class CommunityBLL {
     public static long currentCommunity_id = 0;
@@ -125,5 +122,16 @@ public class CommunityBLL {
     }
 
 
+    public static List<GAECommunity> getOnlyJoined_Community() {
+        List<GAECommunity> allCommunities = getAll_Community();
+        List<GAECommunity> onlyJoinedCommunities = new ArrayList<GAECommunity>();
+        for (GAECommunity community : allCommunities) {
+            if (CommunityBLL.getIamMember(community) || CommunityBLL.getIamAdmin(community)) {
+                onlyJoinedCommunities.add(community);
+            }
 
+        }
+
+        return onlyJoinedCommunities;
+    }
 }

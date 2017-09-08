@@ -36,6 +36,7 @@ public class PFG_Fulltopia {
     public final static String EDIT_MODE_NEW = "EDIT_MODE_NEW";
     public final static String MODIFY_COMMUNITY = "MODIFY_COMMUNITY";
     public final static String MODIFY_CALL = "MODIFY_CALL";
+    public static int rbCommunity_All_OnlyJoined;
 
     public static String getCurrentUserID(){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();

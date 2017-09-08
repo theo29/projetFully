@@ -85,12 +85,12 @@
         <!-- MainActivity activities -->
         <activity
             android:name=".MainActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".CommunityMainActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.hesso.projetfully.MainActivity" />
+                android:value="com.hesso.projetfully.CommunityMainActivity" />
         </activity>
 
         <!-- CommunityTypesMainActivity activities -->
@@ -101,18 +101,18 @@
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.hesso.projetfully.MainActivity" />
+                android:value="com.hesso.projetfully.CommunityMainActivity" />
         </activity>
 
         <!-- CommunitiesMainActivity activities -->
         <activity
             android:name=".CommunityMainActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".CommunityMainActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.hesso.projetfully.MainActivity" />
+                android:value="com.hesso.projetfully.CommunityMainActivity" />
         </activity>
         <!-- CommunityEditActivity activities -->
         <activity
@@ -122,7 +122,7 @@
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.hesso.projetfully.MainActivity" />
+                android:value="com.hesso.projetfully.CommunityMainActivity" />
         </activity>
 
         <!-- CommunityPageActivity activities -->
@@ -133,28 +133,28 @@
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.hesso.projetfully.MainActivity" />
+                android:value="com.hesso.projetfully.CommunityMainActivity" />
         </activity>
 
         <!-- CallsMainActivity activities -->
         <activity
             android:name=".CallMainActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".CommunityPageActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.hesso.projetfully.MainActivity" />
+                android:value="com.hesso.projetfully.CommunityPageActivity" />
         </activity>
         <!-- CallEditActivity activities -->
         <activity
             android:name=".CallEditActivity"
-            android:parentActivityName=".CallMainActivity">
+            android:parentActivityName=".CommunityPageActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.hesso.projetfully.MainActivity" />
+                android:value="com.hesso.projetfully.CommunityPageActivity" />
         </activity>
 
         <!-- CallPageActivity activities -->
@@ -165,7 +165,7 @@
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.hesso.projetfully.MainActivity" />
+                android:value="com.hesso.projetfully.CallMainActivity" />
         </activity>
 
         <!-- NotificationActivity activities -->
@@ -182,12 +182,12 @@
         <!-- Settings activities -->
         <activity
             android:name=".SettingsActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".CommunityMainActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.hesso.projetfully.MainActivity" />
+                android:value="com.hesso.projetfully.CommunityMainActivity" />
         </activity>
 
         <!-- SelectedCommunity activities -->

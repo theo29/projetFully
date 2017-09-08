@@ -15,11 +15,14 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.theop.myapplication.backend.gAECommunityApi.model.GAECommunity;
 import com.hesso.projetfully.bll.CommunityBLL;
+import com.hesso.projetfully.bll.PFG_Fulltopia;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +38,7 @@ public class CommunityMainActivity extends AppCompatActivity {
     private List<GAECommunity> communities = new ArrayList<GAECommunity>();
     private GAECommunity community;
     private Intent intentCommunity;
+    private RadioGroup radio = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +46,15 @@ public class CommunityMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_community_main);
         // enable the app icon as the up buton
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //set radio button
+        setRadioButton();
+
 
         // Source de données
-        communities = CommunityBLL.getAll_Community();
+        if (PFG_Fulltopia.rbCommunity_All_OnlyJoined == 1)
+            communities = CommunityBLL.getOnlyJoined_Community();
+        else
+            communities = CommunityBLL.getAll_Community();
 
         // intent pour detail
         intentCommunity = new Intent(this, CommunityPageActivity.class);
@@ -73,7 +83,7 @@ public class CommunityMainActivity extends AppCompatActivity {
 
 
         //ListView
-        final ListView list = (ListView) findViewById(R.id.main_listview);
+        final ListView list = findViewById(R.id.main_listview);
 
         list.setAdapter(adapter);
 
@@ -96,6 +106,36 @@ public class CommunityMainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+    }
+
+    private void setRadioButton() {
+        radio = findViewById(R.id.radioGroupCommunity);
+        if (PFG_Fulltopia.rbCommunity_All_OnlyJoined == 1) {
+            RadioButton radioBtn_CommunityOnlyJoined = radio.findViewById(R.id.rgCommunityJoined);
+            radioBtn_CommunityOnlyJoined.setChecked(true);
+        } else {
+            RadioButton radioBtn_CommunityAll = radio.findViewById(R.id.rgCommunityAll);
+            radioBtn_CommunityAll.setChecked(true);
+        }
+
+        // set listener
+        radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                View radioButton = radio.findViewById(checkedId);
+                int index = radio.indexOfChild(radioButton);
+
+                //  set preferences rbCommunity_All_OnlyJoined;
+                PFG_Fulltopia.rbCommunity_All_OnlyJoined = index;
+
+                refresh_Activity();
+
+            }
+        });
+
 
     }
 
