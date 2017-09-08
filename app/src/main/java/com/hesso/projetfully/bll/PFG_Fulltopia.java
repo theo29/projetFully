@@ -246,6 +246,20 @@ public class PFG_Fulltopia {
 
     }
 
+    public static String getCommunityType(long communityType_id) {
+        GAECommunityType gaeCommunityType = new GAECommunityType();
+        List<GAECommunityType> allGAECommunityType = getAll_CommunityTypes();
+        for (GAECommunityType gaeM : allGAECommunityType) {
+            if (gaeM.getId().equals(communityType_id)) {
+                return gaeCommunityType.toString();
+            }
+        }
+
+        if (gaeCommunityType == null) gaeCommunityType = new GAECommunityType();
+        return "trouve rien";
+
+    }
+
 
 
 }

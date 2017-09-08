@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.theop.myapplication.backend.gAECommunityApi.model.GAECommunity;
 import com.hesso.projetfully.bll.CommunityBLL;
+import com.hesso.projetfully.bll.PFG_Fulltopia;
 
 import static com.hesso.projetfully.bll.PFG_Fulltopia.MODIFY_COMMUNITY;
 
@@ -55,13 +56,14 @@ public class CommunityPageActivity extends AppCompatActivity {
         textView.setText(community.getName());
 
         textView = (TextView) findViewById(R.id.communityType);
-        textView.setText(""+CommunityBLL.getCommunityType(community.getIdCommunityType()));
+        textView.setText(""+ PFG_Fulltopia.getCommunityType(community.getIdCommunityType()));
 
 
         textView = (TextView) findViewById(R.id.descriptionLongC);
-        textView.setText("" + community.getName());
+        textView.setText("" + community.getDescriptionLong());
         setBoutonTextJoinLeave();
         setButonAddCall();
+       // setButonModify();
     }
 
     private void setBoutonTextJoinLeave() {
@@ -79,6 +81,16 @@ public class CommunityPageActivity extends AppCompatActivity {
         else
             btnAddCall.setVisibility(View.INVISIBLE);
     }
+
+    /*
+    public void setButonModify(){
+        Button btnModify = (Button) findViewById(R.id.writer_modify_button);
+        if(CommunityBLL.getIamAdmin(community))
+            btnModify.setVisibility(View.VISIBLE);
+        else
+            btnModify.setVisibility(View.INVISIBLE);
+    }
+*/
 
     @Override
     protected void onSaveInstanceState(Bundle savedInstanceState) {
@@ -157,8 +169,6 @@ public class CommunityPageActivity extends AppCompatActivity {
         intent.putExtra(MODIFY_COMMUNITY, community.getId());
         CommunityBLL.currentCommunity_id = community.getId();
         startActivity(intent);
-
-
     }
 
 

@@ -124,17 +124,6 @@ public class CommunityBLL {
         return true;
     }
 
-    public static GAECommunityType getCommunityType(long communityType_id) {
-        GAECommunityType gaeCommunityTypes = new GAECommunityType();
-        List<GAECommunityType> allGAECommunityType = getAll_CommunityTypes();
-        for (GAECommunityType gaeM : allGAECommunityType) {
-            if (gaeM.getId().equals(communityType_id)) {
-                return gaeCommunityTypes;
-            }
-        }
 
-        if (gaeCommunityTypes == null) gaeCommunityTypes = new GAECommunityType();
-        return gaeCommunityTypes;
-    }
 
 }

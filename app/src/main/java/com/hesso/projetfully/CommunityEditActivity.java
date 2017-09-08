@@ -83,7 +83,7 @@ public class CommunityEditActivity extends AppCompatActivity {
 
         spin = (Spinner) findViewById(R.id.spinner_community);
 
-        //communityTypes = PFG_Fulltopia.getAll_CommunityTypes();
+        communityTypes = PFG_Fulltopia.getAll_CommunityTypes();
 
         ArrayAdapter<GAECommunityType> adapter = new ArrayAdapter<GAECommunityType>(this, R.layout.activity_community_edit, communityTypes) {
             // Call for every entry in the ArrayAdapter
@@ -100,7 +100,7 @@ public class CommunityEditActivity extends AppCompatActivity {
                 }
 
                 //Add Text to the layout
-                TextView textView1 = (TextView) view.findViewById(R.id.textView_community);
+                TextView textView1 = (TextView) view.findViewById(R.id.textView_communitytypes);
                 textView1.setText(communityTypes.get(position).getDescription());
 
                 return view;
