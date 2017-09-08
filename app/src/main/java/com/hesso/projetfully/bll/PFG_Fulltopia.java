@@ -247,17 +247,15 @@ public class PFG_Fulltopia {
     }
 
     public static String getCommunityType(long communityType_id) {
-        GAECommunityType gaeCommunityType = new GAECommunityType();
+
         List<GAECommunityType> allGAECommunityType = getAll_CommunityTypes();
         for (GAECommunityType gaeM : allGAECommunityType) {
             if (gaeM.getId().equals(communityType_id)) {
-                return gaeCommunityType.toString();
+                return gaeM.getDescription();
             }
         }
 
-        if (gaeCommunityType == null) gaeCommunityType = new GAECommunityType();
-        return "trouve rien";
-
+        return "Not found";
     }
 
 

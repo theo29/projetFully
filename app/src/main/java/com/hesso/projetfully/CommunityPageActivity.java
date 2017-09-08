@@ -43,7 +43,6 @@ public class CommunityPageActivity extends AppCompatActivity {
 //        Toast.makeText(this, "I receveid a community id: " + community_id, Toast.LENGTH_LONG).show();
 
         // get community from Datasource
-//        community = new CommunityDataSource(this).getCommunityById(community_id);
         community = CommunityBLL.getCommunityById(community_id);
 
         // set current id for default
