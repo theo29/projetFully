@@ -27,6 +27,7 @@ import java.util.List;
 
 import static com.hesso.projetfully.bll.PFG_Fulltopia.MENU_REMOVE;
 import static com.hesso.projetfully.bll.PFG_Fulltopia.MENU_SELECT;
+import static com.hesso.projetfully.bll.PFG_Fulltopia.MODIFY_CALL;
 
 public class CallMainActivity extends AppCompatActivity {
     public static final String EXTRA_CALL_ID = "com.hesso.projetfully.CALL_ID";
@@ -43,12 +44,10 @@ public class CallMainActivity extends AppCompatActivity {
 
         // Source de données
         calls = CallBLL.getAll_CallsOfCommunity(CommunityBLL.currentCommunity_id);
-/*
-        //TODO GCI
 
         // intent pour detail
         intentCall = new Intent(this, CallPageActivity.class);
-*/
+
         ArrayAdapter<GAECall> adapter = new ArrayAdapter<GAECall>(this, R.layout.listview_call_layout, calls) {
             // Call for every entry in the ArrayAdapter
             @Override
@@ -111,12 +110,11 @@ public class CallMainActivity extends AppCompatActivity {
     private void startActivity_CallEditSelected(int position) {
         //       Toast.makeText(this, "You have selected: " + calls.get(position).getName(), Toast.LENGTH_LONG).show();
         call = calls.get(position);
-/*
-        //TODO GCI
+
         Intent intent = new Intent(this, CallEditActivity.class);
         intent.putExtra(MODIFY_CALL, call.getId());
+        CallBLL.currentCall_id = call.getId();
         startActivity(intent);
-*/
     }
 
     //Crate a ContextMenu for edit or delete the item
@@ -210,12 +208,8 @@ public class CallMainActivity extends AppCompatActivity {
 
     // load a new activity for add a new call
     public void showCallAdd(View view) {
-        /*
-        //TODO GCI
-
         Intent showCallAdd = new Intent(this, CallEditActivity.class);
         startActivity(showCallAdd);
-*/
     }
 
 }

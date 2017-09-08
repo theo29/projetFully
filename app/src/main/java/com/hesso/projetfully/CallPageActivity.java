@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.theop.myapplication.backend.gAECallApi.model.GAECall;
 import com.example.theop.myapplication.backend.gAECommunityApi.model.GAECommunity;
@@ -39,12 +40,12 @@ public class CallPageActivity extends AppCompatActivity {
         if (call_id == 0)
             call_id = CallBLL.currentCall_id;
 
-//        Toast.makeText(this, "I receveid a call id: " + call_id, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "I receveid a call id: " + call_id, Toast.LENGTH_LONG).show();
 
         // get call from Datasource
 //        call = new CallDataSource(this).getCallById(call_id);
         call = CallBLL.getCallById(call_id);
-        currentCommunity = CommunityBLL.getCommunityById(call_id);
+        currentCommunity = CommunityBLL.getCommunityById(call.getCommunityId());
 
         // set current id for default
         CallBLL.currentCall_id = call.getId();
