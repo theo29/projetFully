@@ -174,11 +174,17 @@ public class CommunityMainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             //case 1: we start edit activity
             case MENU_SELECT:
-                startActivity_CommunityEditSelected(info.position);
+                if (CommunityBLL.getIamAdmin(communities.get(info.position))) {
+                    startActivity_CommunityEditSelected(info.position);
+                } else {
+                    Toast.makeText(this, getResources().getString(R.string.noPermissionToUpdate), Toast.LENGTH_SHORT).show();
+                }
+
                 return true;
             //Delete the item
             case MENU_REMOVE:
-                //For be sur, we show an alert dialog if yes or not, the user want to delete the item
+                if (CommunityBLL.getIamAdmin(communities.get(info.position))) {
+                    //For be sur, we show an alert dialog if yes or not, the user want to delete the item
                 new AlertDialog.Builder(this)
                         .setTitle(getResources().getString(R.string.delete))
                         .setMessage(getResources().getString(R.string.delete_question))
@@ -194,6 +200,10 @@ public class CommunityMainActivity extends AppCompatActivity {
                         })
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .show();
+                } else {
+                    Toast.makeText(this, getResources().getString(R.string.noPermissionToDelete), Toast.LENGTH_SHORT).show();
+                }
+
             default:
                 return super.onContextItemSelected(item);
         }
@@ -201,10 +211,14 @@ public class CommunityMainActivity extends AppCompatActivity {
 
     // Delete a community by option menu
     public void delete_item(int position) {
-        String title = communities.get(position).getName();
-        CommunityBLL.remove(communities.get(position).getId());
-        Toast.makeText(this, getResources().getString(R.string.deleted) + title, Toast.LENGTH_SHORT).show();
-        refresh_Activity();
+        if (CommunityBLL.getIamAdmin(communities.get(position))) {
+            String title = communities.get(position).getName();
+            CommunityBLL.remove(communities.get(position).getId());
+            Toast.makeText(this, getResources().getString(R.string.deleted) + title, Toast.LENGTH_SHORT).show();
+            refresh_Activity();
+        } else {
+            Toast.makeText(this, getResources().getString(R.string.noPermissionToDelete), Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void refresh_Activity() {

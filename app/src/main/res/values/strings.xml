@@ -67,4 +67,6 @@
     <string name="title_activity_call_maps">Map</string>
     <string name="all">All</string>
     <string name="joined">Joined</string>
+    <string name="noPermissionToDelete">You do not have permissions to delete</string>
+    <string name="noPermissionToUpdate">You do not have permissions to edit</string>
 </resources>

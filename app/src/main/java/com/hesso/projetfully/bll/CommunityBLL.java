@@ -88,7 +88,7 @@ public class CommunityBLL {
 
     public static boolean getIamAdmin(GAECommunity community) {
         if (community == null) return false;
-        return community.getIdUserAdmin() == PFG_Fulltopia.getCurrentUserID();
+        return (community.getIdUserAdmin().equals(PFG_Fulltopia.getCurrentUserID()));
 
     }
 

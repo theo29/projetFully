@@ -7,8 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.theop.myapplication.backend.gAECallApi.model.GAECall;
 import com.example.theop.myapplication.backend.gAECommunityApi.model.GAECommunity;
@@ -40,10 +40,9 @@ public class CallPageActivity extends AppCompatActivity {
         if (call_id == 0)
             call_id = CallBLL.currentCall_id;
 
-        Toast.makeText(this, "I receveid a call id: " + call_id, Toast.LENGTH_LONG).show();
+//        Toast.makeText(this, "I receveid a call id: " + call_id, Toast.LENGTH_LONG).show();
 
         // get call from Datasource
-//        call = new CallDataSource(this).getCallById(call_id);
         call = CallBLL.getCallById(call_id);
         currentCommunity = CommunityBLL.getCommunityById(call.getCommunityId());
 
@@ -53,17 +52,23 @@ public class CallPageActivity extends AppCompatActivity {
 //        Toast.makeText(this, "I receveid a call: " + call.toString(), Toast.LENGTH_LONG).show();
 
         TextView textView;
-        textView = (TextView) findViewById(R.id.nameCommunity_lbl);
+        textView = findViewById(R.id.nameCommunity_lbl);
         textView.setText(currentCommunity.getName());
 
-        textView = (TextView) findViewById(R.id.idDateendCP);
+        textView = findViewById(R.id.idDateendCP);
         textView.setText("" + call.getDateend());
 
-        textView = (TextView) findViewById(R.id.lieuCP);
+        textView = findViewById(R.id.lieuCP);
         textView.setText("" + call.getLieu());
 
-        textView = (TextView) findViewById(R.id.descriptionCP);
+        textView = findViewById(R.id.descriptionCP);
         textView.setText("" + call.getDescription());
+        Button btn = findViewById(R.id.call_modify_button);
+        if (CallBLL.getIamAdmin(call)) {
+            btn.setVisibility(View.VISIBLE);
+        } else {
+            btn.setVisibility(View.INVISIBLE);
+        }
     }
 
 

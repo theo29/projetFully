@@ -72,7 +72,7 @@ public class CallMainActivity extends AppCompatActivity {
 
 
         //ListView
-        final ListView list = (ListView) findViewById(R.id.main_listview);
+        final ListView list = findViewById(R.id.main_listview);
 
         list.setAdapter(adapter);
 
@@ -133,10 +133,16 @@ public class CallMainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             //case 1: we start edit activity
             case MENU_SELECT:
-                startActivity_CallEditSelected(info.position);
+                if (CallBLL.getIamAdmin(calls.get(info.position))) {
+                    startActivity_CallEditSelected(info.position);
+                } else {
+                    Toast.makeText(this, getResources().getString(R.string.noPermissionToUpdate), Toast.LENGTH_SHORT).show();
+                }
+
                 return true;
             //Delete the item
             case MENU_REMOVE:
+                if (CallBLL.getIamAdmin(calls.get(info.position))) {
                 //For be sur, we show an alert dialog if yes or not, the user want to delete the item
                 new AlertDialog.Builder(this)
                         .setTitle(getResources().getString(R.string.delete))
@@ -153,6 +159,10 @@ public class CallMainActivity extends AppCompatActivity {
                         })
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .show();
+                } else {
+                    Toast.makeText(this, getResources().getString(R.string.noPermissionToDelete), Toast.LENGTH_SHORT).show();
+                }
+
             default:
                 return super.onContextItemSelected(item);
         }
@@ -160,6 +170,7 @@ public class CallMainActivity extends AppCompatActivity {
 
     // Delete a call by option menu
     public void delete_item(int position) {
+
         String title = calls.get(position).getDescription();
         CallBLL.remove(calls.get(position).getId());
         Toast.makeText(this, getResources().getString(R.string.deleted) + title, Toast.LENGTH_SHORT).show();

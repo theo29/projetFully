@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -84,7 +85,14 @@ public class CommunityEditActivity extends AppCompatActivity {
             spinner_setCommunityType();
             spin.setEnabled(false);
             spin.setClickable(false);
-
+            FloatingActionButton btn = findViewById(R.id.btnValidate_community);
+            if (CommunityBLL.getIamAdmin(gaeCommunity)) {
+                btn.setClickable(true);
+                btn.setVisibility(View.VISIBLE);
+            } else {
+                btn.setClickable(false);
+                btn.setVisibility(View.INVISIBLE);
+            }
         }
 
     }

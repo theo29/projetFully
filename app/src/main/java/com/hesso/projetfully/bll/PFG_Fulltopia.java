@@ -220,17 +220,16 @@ public class PFG_Fulltopia {
     private static void test_Add_DATA_Call() {
         List<GAECall> gaeCalls = new ArrayList<GAECall>();
         List<GAEMember> gaeMembers = MemberBLL.getAll_Members();
-        for (GAEMember gaeMember : gaeMembers) {
             GAECall gaeCall;
             gaeCall = new GAECall();
 //            gaeCall.setId((long) 0);
-            gaeCall.setIdMemberCreator(gaeMember.getUserId());
-            gaeCall.setCommunityId(gaeMember.getCommunityId());
+        gaeCall.setIdMemberCreator(gaeMembers.get(0).getUserId());
+        gaeCall.setCommunityId(gaeMembers.get(0).getCommunityId());
             gaeCall.setDescription("Pétanque ce soir au bistro");
             gaeCall.setDateend("10.09.2017");
             gaeCall.setLieu("Sion");
             gaeCalls.add(gaeCall);
-        }
+
 
         new EndpointsAsyncTaskCall(gaeCalls).execute();
     }
