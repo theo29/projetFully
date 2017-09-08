@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.theop.myapplication.backend.gAECallApi.model.GAECall;
+import com.example.theop.myapplication.backend.gAECommunityApi.model.GAECommunity;
 import com.hesso.projetfully.bll.CallBLL;
 import com.hesso.projetfully.bll.CommunityBLL;
 import com.hesso.projetfully.bll.PFG_Fulltopia;
@@ -26,7 +27,7 @@ public class CallEditActivity extends AppCompatActivity {
     private long currentId;
     private Intent intent;
     private String currentEditMode;
-
+    private GAECommunity currentCommunity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +37,7 @@ public class CallEditActivity extends AppCompatActivity {
 
         // set default mode
         currentEditMode = EDIT_MODE_NEW;
-
+        currentCommunity = CommunityBLL.getCommunityById(CommunityBLL.currentCommunity_id);
         //get  intent for the call
         intent = getIntent();
         if (intent.hasExtra(MODIFY_CALL)) {
@@ -69,6 +70,9 @@ public class CallEditActivity extends AppCompatActivity {
             editText = (EditText) findViewById(R.id.dateendCE);
             editText.setText(gaeCall.getDateend());
 
+            editText = (EditText) findViewById(R.id.lieuCE);
+            editText.setText(gaeCall.getLieu());
+
         }
 
     }
@@ -77,12 +81,16 @@ public class CallEditActivity extends AppCompatActivity {
         EditText editText;
 
 //        gaeCall.setId(currentId);
-
+        gaeCall.setIdMemberCreator(PFG_Fulltopia.getCurrentUserID());
+        gaeCall.setCommunityId(CommunityBLL.currentCommunity_id);
         editText = (EditText) findViewById(R.id.dateendCE);
         gaeCall.setDateend(editText.getText().toString());
 
         editText = (EditText) findViewById(R.id.descriptionCE);
         gaeCall.setDescription(editText.getText().toString());
+
+        editText = (EditText) findViewById(R.id.lieuCE);
+        gaeCall.setLieu(editText.getText().toString());
         // check if this is a valid entry
         if (!CallBLL.isValidCall(gaeCall)) {
             new AlertDialog.Builder(this)

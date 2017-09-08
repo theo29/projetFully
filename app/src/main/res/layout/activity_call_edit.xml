@@ -46,6 +46,20 @@
             </LinearLayout>
 
             <EditText
+                android:id="@+id/dateendCE"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="@string/date" />
+
+            <EditText
+                android:id="@+id/lieuCE"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="@string/lieu" />
+
+            <EditText
                 android:id="@+id/descriptionCE"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -53,12 +67,6 @@
                 android:hint="@string/description"
                 android:inputType="textCapWords" />
 
-            <EditText
-                android:id="@+id/dateendCE"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:hint="@string/date" />
         </LinearLayout>
     </ScrollView>
 

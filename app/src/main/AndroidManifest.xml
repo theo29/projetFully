@@ -107,7 +107,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.hesso.projetfully.MainActivity" />
         </activity>
-        <!-- CommunityPageActivity activities -->
+        <!-- CommunityEditActivity activities -->
         <activity
             android:name=".CommunityEditActivity"
             android:parentActivityName=".CommunityMainActivity">
@@ -122,6 +122,38 @@
         <activity
             android:name=".CommunityPageActivity"
             android:parentActivityName=".CommunityMainActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hesso.projetfully.MainActivity" />
+        </activity>
+
+        <!-- CallsMainActivity activities -->
+        <activity
+            android:name=".CallMainActivity"
+            android:parentActivityName=".MainActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hesso.projetfully.MainActivity" />
+        </activity>
+        <!-- CallEditActivity activities -->
+        <activity
+            android:name=".CallEditActivity"
+            android:parentActivityName=".CallMainActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hesso.projetfully.MainActivity" />
+        </activity>
+
+        <!-- CallPageActivity activities -->
+        <activity
+            android:name=".CallPageActivity"
+            android:parentActivityName=".CallMainActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data

@@ -58,4 +58,7 @@
     <string name="new_call">New call</string>
     <string name="modify_call">Modify call</string>
     <string name="date">Date</string>
+    <string name="lieu">Place</string>
+    <string name="showInMap">Show in Map</string>
+    <string name="Call">Call</string>
 </resources>
