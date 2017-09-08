@@ -101,16 +101,7 @@ public class CallBLL {
     }
 
     public static boolean remove(Long call_id) {
-        try {
-            new EndpointsAsyncTaskCall(PFG_Fulltopia.QUERY_REMOVE, call_id).execute().get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-            return false;
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-            return false;
-        }
-
-        return true;
+        return false;
     }
+
 }

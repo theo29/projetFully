@@ -50,4 +50,12 @@
     <string name="deleted">Removed: </string>
     <string name="joinUs">Join us</string>
     <string name="Leave">Leave</string>
+    <string name="calls">Calls</string>
+    <string name="call">call</string>
+    <string name="new_gaeCall_added">You have added a new call</string>
+    <string name="update_gaeCall">You have updated a call</string>
+    <string name="Call_control">Unable to add Call: please check your input</string>
+    <string name="new_call">New call</string>
+    <string name="modify_call">Modify call</string>
+    <string name="date">Date</string>
 </resources>
