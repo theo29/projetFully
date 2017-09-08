@@ -125,4 +125,10 @@ public class CallPageActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onClickShowiInMap(View view){
+        Intent intent = new Intent(this, CallMapsActivity.class);
+        intent.putExtra(MODIFY_CALL, call.getLieu());
+        startActivity(intent);
+    }
+
 }
